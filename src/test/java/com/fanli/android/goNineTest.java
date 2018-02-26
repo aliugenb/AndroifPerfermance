@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class SuperCpuTest extends Action{
+public class goNineTest extends Action{
 
     private boolean start = false;
 
@@ -16,7 +16,7 @@ public class SuperCpuTest extends Action{
         try {
             start = true;
             for (int i=0;i<5;i++){
-                driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
+                driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
                 driver.pressKeyCode(AndroidKeyCode.BACK);
             }
         } catch (Exception e) {
@@ -34,7 +34,7 @@ public class SuperCpuTest extends Action{
             Thread.sleep(500);
             System.out.println("waiting");
         }
-        new Cpu().writeExcel("super-Cpu");
+        new Cpu().writeExcel("goNine-Cpu");
     }
     @Test
     public void memoryMonitor() throws IOException, InterruptedException{
@@ -42,8 +42,7 @@ public class SuperCpuTest extends Action{
             Thread.sleep(500);
             System.out.println("waiting");
         }
-        new Cpu().writeExcel("super-Cpu");
+        new Cpu().writeExcel("goNine-Memory");
     }
-
 
 }
