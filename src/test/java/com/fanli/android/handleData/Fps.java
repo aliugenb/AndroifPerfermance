@@ -57,7 +57,12 @@ public class Fps extends GetData {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
         String desktopPath = desktopDir.getAbsolutePath();
-        String path = "/Users/Roger/Desktop/"+dataType+"-"+dateFormat.format(now)+".xls";
+        String path = desktopPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
+        if (osName.equals("Mac OS X")){
+            path = desktopPath+"/Desktop/"+dataType+"-"+dateFormat.format(now)+".xls";
+        }else if(osName.indexOf("Windows")!=-1){
+            path = desktopPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
+        }
         File file = new File(path);
         FileOutputStream fOut = null;
 
