@@ -69,7 +69,7 @@ public abstract class GetData implements WriteExcel{
         String desktopPath = desktopDir.getAbsolutePath();
         String path = desktopPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
         if (osName.equals("Mac OS X")){
-            path = desktopPath+"Desktop/"+dataType+"-"+dateFormat.format(now)+".xls";
+            path = desktopPath+"/Desktop/"+dataType+"-"+dateFormat.format(now)+".xls";
         }else if(osName.indexOf("Windows")!=-1){
             path = desktopPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
         }

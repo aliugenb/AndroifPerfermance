@@ -23,7 +23,7 @@ public  class Action {
 
         //设置自动化相关参数
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("noReset", false);
         //  capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("device", "Android");
         capabilities.setCapability("platformName", "Android");
