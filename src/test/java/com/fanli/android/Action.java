@@ -51,24 +51,23 @@ public  class Action {
     }
 
 
-    public static void enterHomePage(){
+    public static void skipStartScreen(){
         try{
             while(driver.findElementById("com.fanli.android.apps:id/main_image").isDisplayed()){
                 driver.findElementById("com.fanli.android.apps:id/main_image").click();
             }
         }catch(Exception e){
-            System.out.println("弹层不存在！");
+            System.out.println("无开机画面或已关闭");
         }
     }
 
     public static void skipSplash(){
         try{
-            while(driver.findElementById("com.fanli.android.apps:id/main_image").isDisplayed()){
-                TouchAction action = new TouchAction(driver).press(900,1000).waitAction().moveTo(200,  1000).release();
-                action.perform();
+            while(driver.findElementById("com.fanli.android.apps:id/splash_img").isDisplayed()){
+                driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
             }
         }catch(Exception e){
-            System.out.println("弹层不存在！");
+            System.out.println("跳过splash");
         }
     }
 
@@ -80,5 +79,16 @@ public  class Action {
         }catch(Exception e){
             System.out.println("弹层不存在！");
         }
+    }
+
+    //分钟转换成毫秒
+    public static int formatMin(int i){
+        int timeLong = 0;
+        if(i>0){
+            timeLong = i*60*1000;
+        }else {
+            System.out.println("输入错误");
+        }
+        return timeLong;
     }
 }
