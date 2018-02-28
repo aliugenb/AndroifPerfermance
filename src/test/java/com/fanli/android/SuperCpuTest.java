@@ -17,7 +17,7 @@ public class SuperCpuTest{
     public static void setUp() throws Exception {
         Action.setUp();
         Thread.sleep(3000);
-        Action.enterHomePage();
+        Action.skipStartScreen();
         Thread.sleep(3000);
     }
 

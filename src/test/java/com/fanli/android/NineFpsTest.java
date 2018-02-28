@@ -4,7 +4,6 @@ import com.fanli.android.handleData.Fps;
 import com.fanli.android.handleData.Memory;
 import io.appium.java_client.TouchAction;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -17,7 +16,7 @@ public class NineFpsTest {
     public void setUp() throws Exception {
         Action.setUp();
         Thread.sleep(3000);
-        Action.enterHomePage();
+        Action.skipStartScreen();
         Thread.sleep(3000);
     }
 
