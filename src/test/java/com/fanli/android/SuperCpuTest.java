@@ -1,14 +1,25 @@
 package com.fanli.android;
 
 import com.fanli.android.handleData.Cpu;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidKeyCode;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class SuperCpuTest extends Action{
+public class SuperCpuTest{
 
     private boolean start = false;
+
+    @BeforeTest
+    public static void setUp() throws Exception {
+        Action.setUp();
+        Thread.sleep(3000);
+        Action.enterHomePage();
+        Thread.sleep(3000);
+    }
 
     @Test
     public void superTest() throws InterruptedException,IOException {
@@ -16,8 +27,8 @@ public class SuperCpuTest extends Action{
         try {
             start = true;
             for (int i=0;i<5;i++){
-                driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
-                driver.pressKeyCode(AndroidKeyCode.BACK);
+                Action.driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
+                Action.driver.pressKeyCode(AndroidKeyCode.BACK);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,6 +46,11 @@ public class SuperCpuTest extends Action{
             System.out.println("waiting");
         }
         new Cpu().writeExcel("super-Cpu");
+    }
+
+    @AfterTest
+    public void tearDown() throws Exception {
+        Action.tearDown();
     }
 
 }

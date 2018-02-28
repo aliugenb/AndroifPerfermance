@@ -3,29 +3,40 @@ package com.fanli.android;
 import com.fanli.android.handleData.Fps;
 import com.fanli.android.handleData.Memory;
 import io.appium.java_client.TouchAction;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class NineFpsTest extends Action{
+public class NineFpsTest {
     private boolean start = false;
+
+    @BeforeTest
+    public void setUp() throws Exception {
+        Action.setUp();
+        Thread.sleep(3000);
+        Action.enterHomePage();
+        Thread.sleep(3000);
+    }
 
     @Test
     public void nineTest() throws Exception {
         Thread.sleep(10000);
         try {
-            driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
+            Action.driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
             start = true;
             Thread.sleep(2000);
-            int width=driver.manage().window().getSize().width;
-            int height=driver.manage().window().getSize().height;
+            int width=Action.driver.manage().window().getSize().width;
+            int height=Action.driver.manage().window().getSize().height;
             for(int i=0;i<=5;i++) {
                 for (int i1 = 0; i1 <= 5; i1++) {
-                    TouchAction action = new TouchAction(driver).press(width / 2, height * 5 / 7).waitAction().moveTo(width / 2, height * 2 / 7).release();
+                    TouchAction action = new TouchAction(Action.driver).press(width / 2, height * 5 / 7).waitAction().moveTo(width / 2, height * 2 / 7).release();
                     action.perform();
                 }
                 for (int i2 = 0; i2 <= 5; i2++) {
-                    TouchAction action1 = new TouchAction(driver).press(width / 2, height * 2 / 7).waitAction().moveTo(width / 2, height * 5 / 7).release();
+                    TouchAction action1 = new TouchAction(Action.driver).press(width / 2, height * 2 / 7).waitAction().moveTo(width / 2, height * 5 / 7).release();
                     action1.perform();
                 }
             }
@@ -53,5 +64,10 @@ public class NineFpsTest extends Action{
             System.out.println("waiting");
         }
         new Memory().writeExcel("9k9-memory");
+    }
+
+    @AfterTest
+    public void tearDown() throws Exception {
+        Action.tearDown();
     }
 }
