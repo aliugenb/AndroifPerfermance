@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class NineFpsTest {
     private boolean start = false;
@@ -22,9 +23,9 @@ public class NineFpsTest {
 
     @Test
     public void nineTest() throws Exception {
-        Thread.sleep(10000);
         try {
             Action.driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
+            Action.closeInterstitial();
             start = true;
             Thread.sleep(2000);
             int width=Action.driver.manage().window().getSize().width;
@@ -37,6 +38,7 @@ public class NineFpsTest {
                 for (int i2 = 0; i2 <= 5; i2++) {
                     TouchAction action1 = new TouchAction(Action.driver).press(width / 2, height * 2 / 7).waitAction().moveTo(width / 2, height * 5 / 7).release();
                     action1.perform();
+                    Thread.sleep(2000);
                 }
             }
         } catch (Exception e) {

@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class SuperCpuTest{
 
@@ -23,11 +24,13 @@ public class SuperCpuTest{
 
     @Test
     public void superTest() throws InterruptedException,IOException {
-        Thread.sleep(10000);
         try {
             start = true;
+
             for (int i=0;i<5;i++){
                 Action.driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
+                Action.driver.findElementById("com.fanli.android.apps:id/leftIcon").click();
+                Thread.sleep(5000);
                 Action.driver.pressKeyCode(AndroidKeyCode.BACK);
             }
         } catch (Exception e) {
