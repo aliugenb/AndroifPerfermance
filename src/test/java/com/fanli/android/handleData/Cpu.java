@@ -26,9 +26,11 @@ public class Cpu extends GetData {
             StringBuffer stringBuffer = new StringBuffer();
             String line = null;
             while ((line = in.readLine())!=null) {
-                if((line.indexOf("com.fanli.android.apps")!=-1)&&(line.indexOf("com.fanli.android.apps:push")==-1)&&(line.indexOf("com.fanli.android.apps:xg_service_v2")==-1)){
-                    stringBuffer.append(line+" ");
+                if((line.indexOf("com.fanli.android.apps:")!=-1)){
+//                    stringBuffer.append(line+" ");
+                    continue;
                 }
+                stringBuffer.append(line+" ");
             }
             String str = stringBuffer.toString().trim();
             result = handleCmd(str);
@@ -76,6 +78,7 @@ public class Cpu extends GetData {
             if(cpu!=null){
                 data.add(cpu);
             }
+            Thread.sleep(5000);
         }
         System.out.println("Cpu收集数据完成...");
         return data;

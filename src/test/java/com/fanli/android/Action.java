@@ -3,8 +3,11 @@ package com.fanli.android;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -12,9 +15,11 @@ public  class Action {
 
     public static AndroidDriver<AndroidElement> driver;
 
-//    @BeforeTest
+    @BeforeTest
     public static void setUp() throws Exception {
         GetDeviceInfo getDeviceInfo = new GetDeviceInfo();
+        String deviceName = getDeviceInfo.getDeviceName();
+        String platformVersion = getDeviceInfo.getOsVersion();
         //设置apk的路径
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "apps");
@@ -26,10 +31,10 @@ public  class Action {
         //  capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("device", "Android");
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("deviceName", getDeviceInfo.getDeviceName());
+        capabilities.setCapability("deviceName", deviceName);
 
         //设置安卓系统版本
-        capabilities.setCapability("platformVersion", getDeviceInfo.getOsVersion());
+        capabilities.setCapability("platformVersion", platformVersion);
         //设置apk路径
         capabilities.setCapability("app", app.getAbsolutePath());
 
@@ -39,12 +44,33 @@ public  class Action {
 
         //初始化
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+        Thread.sleep(3000);
+        skipStartScreen();
+        Thread.sleep(3000);
+        closeInterstitial();
     }
 
-//    @AfterTest
+    @AfterTest
     public static void tearDown() throws Exception {
         driver.quit();
+    }
+
+    //执行cmd
+    public static void execCmd(String cmd) throws IOException {
+        Runtime runtime = Runtime.getRuntime();
+        Process proc = runtime.exec(cmd);
+
+        try {
+            if (proc.waitFor() != 0) {
+                System.err.println("exit value = " + proc.exitValue());
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            proc.destroy();
+        }
     }
 
 
@@ -61,7 +87,7 @@ public  class Action {
     public static void skipSplash(){
         try{
             while(driver.findElementById("com.fanli.android.apps:id/splash_img").isDisplayed()){
-                driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
+                driver.findElementByAndroidUIAutomator("text(\"跳过\")").click();
             }
         }catch(Exception e){
             System.out.println("跳过splash");

@@ -10,29 +10,39 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Date;
 
-public class SuperCpuTest{
+public class SuperCpuTest extends Action{
 
     private boolean start = false;
+    private static  long s = (new Date()).getTime();
 
-    @BeforeTest
-    public static void setUp() throws Exception {
-        Action.setUp();
-        Thread.sleep(3000);
-        Action.skipStartScreen();
-        Thread.sleep(3000);
-    }
+//    @BeforeTest
+//    public static void setUp() throws Exception {
+//        Action.setUp();
+//        Thread.sleep(3000);
+//        Action.skipStartScreen();
+//        Thread.sleep(3000);
+//        Action.closeInterstitial();
+//    }
 
     @Test
     public void superTest() throws InterruptedException,IOException {
+        start = true;
+        Action.execCmd("adb shell input tap 126 558");
+        Thread.sleep(3000);
+        closeInterstitial();
+        Action.execCmd("adb shell input keyevent 4");
+        Thread.sleep(3000);
         try {
-            start = true;
+            while (((new Date()).getTime()-s)<Action.formatMin(5)){
+//                Action.driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
+                Action.execCmd("adb shell input tap 126 558");
+                Thread.sleep(3000);
+//                Action.driver.findElementById("com.fanli.android.apps:id/leftIcon").click();
 
-            for (int i=0;i<5;i++){
-                Action.driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
-                Action.driver.findElementById("com.fanli.android.apps:id/leftIcon").click();
-                Thread.sleep(5000);
-                Action.driver.pressKeyCode(AndroidKeyCode.BACK);
+                Action.execCmd("adb shell input keyevent 4");
+                Thread.sleep(3000);
             }
+            Thread.sleep(Action.formatMin(2));
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
@@ -51,9 +61,9 @@ public class SuperCpuTest{
         new Cpu().writeExcel("super-Cpu");
     }
 
-    @AfterTest
-    public void tearDown() throws Exception {
-        Action.tearDown();
-    }
+//    @AfterTest
+//    public void tearDown() throws Exception {
+//        Action.tearDown();
+//    }
 
 }
