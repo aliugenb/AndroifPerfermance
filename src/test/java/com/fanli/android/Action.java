@@ -48,8 +48,9 @@ public  class Action {
 
         Thread.sleep(3000);
         skipStartScreen();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         closeInterstitial();
+        Thread.sleep(2000);
     }
 
     @AfterTest
@@ -76,7 +77,7 @@ public  class Action {
 
     public static void skipStartScreen(){
         try{
-            while(driver.findElementById("com.fanli.android.apps:id/main_image").isDisplayed()){
+            if(driver.findElementById("com.fanli.android.apps:id/main_image").isDisplayed()){
                 driver.findElementById("com.fanli.android.apps:id/main_image").click();
             }
         }catch(Exception e){
@@ -96,8 +97,8 @@ public  class Action {
 
     public static void closeInterstitial(){
         try{
-            while(Action.driver.findElementById("com.fanli.android.apps:id/close").isDisplayed()){
-                Action.driver.findElementById("com.fanli.android.apps:id/close").click();
+            if(driver.findElementById("com.fanli.android.apps:id/close").isDisplayed()){
+                driver.findElementById("com.fanli.android.apps:id/close").click();
             }
         }catch(Exception e){
             System.out.println("弹层不存在！");

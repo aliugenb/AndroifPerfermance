@@ -26,11 +26,9 @@ public class Cpu extends GetData {
             StringBuffer stringBuffer = new StringBuffer();
             String line = null;
             while ((line = in.readLine())!=null) {
-                if((line.indexOf("com.fanli.android.apps:")!=-1)){
-//                    stringBuffer.append(line+" ");
-                    continue;
+                if((line.indexOf("com.fanli.android.apps")!=-1)&&(line.indexOf("com.fanli.android.apps:")==-1)){
+                    stringBuffer.append(line+" ");
                 }
-                stringBuffer.append(line+" ");
             }
             String str = stringBuffer.toString().trim();
             result = handleCmd(str);
