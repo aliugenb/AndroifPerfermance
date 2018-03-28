@@ -54,4 +54,11 @@ public class NineFpsTest extends Action{
         }
         new Memory().writeExcel("9k9-memory");
     }
+    @Test
+    public void cpuMonitor() throws IOException, InterruptedException{
+        while (!start){
+            System.out.println("waiting");
+        }
+        new Memory().writeExcel("9k9-cpu");
+    }
 }
