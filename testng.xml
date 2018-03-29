@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="5" preserve-order="true" parallel="methods" thread-count="2" name="超级返CPU">
+    <!--<test verbose="5" preserve-order="true" parallel="methods" thread-count="2" name="超级返CPU">-->
+        <!--<classes>-->
+            <!--<class name="com.fanli.android.Super1CpuTest">-->
+                <!--<methods>-->
+                    <!--<include name="superTest"/>-->
+                    <!--<include name="cpuMonitor"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <test verbose="3" preserve-order="true" parallel="methods" thread-count="2" name="9k9首页FPS">
         <classes>
-            <class name="com.fanli.android.SuperCpuTest">
+            <class name="com.fanli.android.NineFpsTest">
                 <methods>
-                    <include name="superTest"/>
-                    <include name="cpuMonitor"/>
+                    <include name="nineFpsTest"/>
+                    <include name="fpsMonitor"/>
                 </methods>
             </class>
         </classes>
     </test>
-    <!--<test verbose="3" preserve-order="true" parallel="methods" thread-count="3" name="9k9FPS">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.NineFpsTest">-->
-                <!--<methods>-->
-                    <!--<include name="nineTest"/>-->
-                    <!--<include name="fpsMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="3" preserve-order="true" parallel="methods"  name="9k9FPS">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.FanliTest">-->
-                <!--<methods>-->
-                    <!--<include name="enterSuper"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
 </suite>
 

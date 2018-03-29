@@ -6,7 +6,6 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,15 +35,16 @@ public class Fps extends GetData {
         while (!Switch.fpsEnd){
             System.out.println("FPS收集数据中...");
             String fps=execCommand(command);
+            System.out.println(fps);
+            if(fps!=null){
+                String total = fps.substring(fps.indexOf("rendered:")+10, fps.indexOf("Janky")-1);
+                String janky = fps.substring(fps.indexOf("Janky frames:")+14, fps.indexOf("(")-1);
+                String percent = fps.substring(fps.indexOf("(")+1, fps.indexOf(")"));
+
+                String result = total+","+janky+","+percent+",";
+                data.add(result);
+            }
             Thread.sleep(4000);
-
-            String total = fps.substring(fps.indexOf("rendered:")+10, fps.indexOf("Janky")-1);
-            String janky = fps.substring(fps.indexOf("Janky frames:")+14, fps.indexOf("(")-1);
-            String percent = fps.substring(fps.indexOf("(")+1, fps.indexOf(")"));
-
-            String result = total+","+janky+","+percent+",";
-
-            data.add(result);
         }
         System.out.println("FPS收集数据完成...");
         return data;
@@ -53,16 +53,14 @@ public class Fps extends GetData {
     @Override
     public void toExcel(List<String> dataMaps, String dataType) {
         int size = dataMaps.size();
+        String path;
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
-        String desktopPath = desktopDir.getAbsolutePath();
-        String path = desktopPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
+        path = resultPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
         if (osName.equals("Mac OS X")){
-            path = desktopPath+"/Desktop/"+dataType+"-"+dateFormat.format(now)+".xls";
-        }else if(osName.indexOf("Windows")!=-1){
-            path = desktopPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
+            path = resultPath+"/"+dataType+"-"+dateFormat.format(now)+".xls";
         }
+        System.out.println(path);
         File file = new File(path);
         FileOutputStream fOut = null;
 

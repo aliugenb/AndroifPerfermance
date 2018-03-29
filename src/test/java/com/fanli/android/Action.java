@@ -45,12 +45,6 @@ public  class Action {
         //初始化
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-
-        Thread.sleep(3000);
-        skipStartScreen();
-        Thread.sleep(2000);
-        closeInterstitial();
-        Thread.sleep(2000);
     }
 
     @AfterTest

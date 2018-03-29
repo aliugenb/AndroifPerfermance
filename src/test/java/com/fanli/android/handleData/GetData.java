@@ -5,13 +5,23 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import javax.swing.filechooser.FileSystemView;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public abstract class GetData implements WriteExcel{
+
+    public static String resultPath;
+    static {
+
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        File appDir = new File(classpathRoot, "src");
+        File testDir = new File(appDir, "test");
+        File resultDir = new File(testDir, "result");
+        resultPath = resultDir.getPath();
+    };
+
 
     @Override
     public void writeExcel(String fileName){
@@ -63,15 +73,12 @@ public abstract class GetData implements WriteExcel{
 
     public void toExcel(List<String> dataMaps, String dataType) {
         int size = dataMaps.size();
+        String path;
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
-        String desktopPath = desktopDir.getAbsolutePath();
-        String path = desktopPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
+        path = resultPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
         if (osName.equals("Mac OS X")){
-            path = desktopPath+"/Desktop/"+dataType+"-"+dateFormat.format(now)+".xls";
-        }else if(osName.indexOf("Windows")!=-1){
-            path = desktopPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
+            path = resultPath+"/"+dataType+"-"+dateFormat.format(now)+".xls";
         }
         File file = new File(path);
         FileOutputStream fOut = null;
@@ -83,7 +90,7 @@ public abstract class GetData implements WriteExcel{
             // 行标
             int rowNum;
             // 列标
-//            int colNum;
+            // int colNum;
 
             HSSFRow row = sheet.createRow(0);
             // 单元格
