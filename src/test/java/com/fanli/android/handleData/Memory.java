@@ -1,7 +1,5 @@
 package com.fanli.android.handleData;
 
-import com.fanli.android.Switch;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +32,7 @@ public class Memory extends GetData{
         }
         System.out.println("Memory收集数据开始...");
         List<String> data = new ArrayList<String>();
-        while (!Switch.memoryEnd){
+        while (!DataSwitch.memoryEnd){
             System.out.println("Memory收集数据中...");
             String memory=execCommand(command);
             if(memory!=null){

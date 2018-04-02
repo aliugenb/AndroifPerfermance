@@ -1,6 +1,5 @@
 package com.fanli.android.handleData;
 
-import com.fanli.android.Switch;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -31,28 +30,45 @@ public class Fps extends GetData {
         }
         System.out.println("FPS收集数据开始...");
         List<String> data = new ArrayList<String>();
+//        try {
+            while (!DataSwitch.fpsEnd){
+                try {
+                    if (DataSwitch.excelNormal) {
+                        System.out.println("FPS收集数据中...");
+                        String fps=execCommand(command);
+                        System.out.println(fps);
+                        if(fps!=null){
+                            String total = fps.substring(fps.indexOf("rendered:")+10, fps.indexOf("Janky")-1);
+                            String janky = fps.substring(fps.indexOf("Janky frames:")+14, fps.indexOf("(")-1);
+                            String percent = fps.substring(fps.indexOf("(")+1, fps.indexOf(")"));
 
-        while (!Switch.fpsEnd){
-            System.out.println("FPS收集数据中...");
-            String fps=execCommand(command);
-            System.out.println(fps);
-            if(fps!=null){
-                String total = fps.substring(fps.indexOf("rendered:")+10, fps.indexOf("Janky")-1);
-                String janky = fps.substring(fps.indexOf("Janky frames:")+14, fps.indexOf("(")-1);
-                String percent = fps.substring(fps.indexOf("(")+1, fps.indexOf(")"));
-
-                String result = total+","+janky+","+percent+",";
-                data.add(result);
+                            String result = total+","+janky+","+percent+",";
+                            data.add(result);
+                        }
+                        Thread.sleep(4000);
+                    } else {
+                        throw new Exception("excel数据生成失败");
+                    }
+                } catch (Exception e) {
+                    data = null;
+                    e.printStackTrace();
+                    break;
+                }
             }
-            Thread.sleep(4000);
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (excelException e) {
+//            e.printStackTrace();
+//            data = null;
+//        }
         System.out.println("FPS收集数据完成...");
         return data;
     }
 
     @Override
     public void toExcel(List<String> dataMaps, String dataType) {
-        int size = dataMaps.size();
         String path;
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
@@ -60,11 +76,13 @@ public class Fps extends GetData {
         if (osName.equals("Mac OS X")){
             path = resultPath+"/"+dataType+"-"+dateFormat.format(now)+".xls";
         }
-        System.out.println(path);
+
         File file = new File(path);
         FileOutputStream fOut = null;
 
         try {
+            int size = dataMaps.size();
+
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet(dataType);
 

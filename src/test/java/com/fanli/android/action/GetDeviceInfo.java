@@ -1,4 +1,4 @@
-package com.fanli.android;
+package com.fanli.android.action;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
