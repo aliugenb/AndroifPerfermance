@@ -24,21 +24,20 @@ public class FpsSuperHomepageTest extends Action {
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
             Thread.sleep(2000);
             closeInterstitial();
-            Thread.sleep(1000);
-            start = true;
             Thread.sleep(2000);
+            start = true;
             swipScreen(5);
         } catch (Exception e) {
             throw e;
         } finally {
             start = true;
-            DataSwitch.fpsEnd=true;
+            DataSwitch.fpsEnd = true;
         }
     }
 
     @Test
-    public void fpsMonitor() throws IOException, InterruptedException{
-        while (!start){
+    public void fpsMonitor() throws IOException, InterruptedException {
+        while (!start) {
             Thread.sleep(500);
             System.out.println("waiting");
         }

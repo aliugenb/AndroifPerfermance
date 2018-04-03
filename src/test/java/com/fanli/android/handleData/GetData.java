@@ -10,9 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public abstract class GetData implements WriteExcel{
+public abstract class GetData implements WriteExcel {
 
     public static String resultPath;
+
     static {
 
         File classpathRoot = new File(System.getProperty("user.dir"));
@@ -20,13 +21,13 @@ public abstract class GetData implements WriteExcel{
         File testDir = new File(appDir, "test");
         File resultDir = new File(testDir, "result");
         resultPath = resultDir.getPath();
-    };
+    }
 
 
     @Override
-    public void writeExcel(String fileName){
+    public void writeExcel(String fileName) {
         try {
-            toExcel(handleData(),fileName);
+            toExcel(handleData(), fileName);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -41,7 +42,7 @@ public abstract class GetData implements WriteExcel{
 
     public abstract List<String> handleData() throws IOException, InterruptedException;
 
-    public String execCommand(String command) throws IOException{
+    public String execCommand(String command) throws IOException {
         String result = null;
         Runtime runtime = Runtime.getRuntime();
         Process proc = runtime.exec(command);
@@ -53,15 +54,15 @@ public abstract class GetData implements WriteExcel{
                     proc.getInputStream()));
             StringBuffer stringBuffer = new StringBuffer();
             String line = null;
-            while ((line = in.readLine())!=null) {
-                stringBuffer.append(line+" ");
+            while ((line = in.readLine()) != null) {
+                stringBuffer.append(line + " ");
             }
-            String str=stringBuffer.toString().trim();
+            String str = stringBuffer.toString().trim();
             result = handleCmd(str);
 
         } catch (InterruptedException e) {
             System.err.println(e);
-        }finally{
+        } finally {
             try {
                 proc.destroy();
             } catch (Exception e1) {
@@ -72,18 +73,19 @@ public abstract class GetData implements WriteExcel{
     }
 
     public void toExcel(List<String> dataMaps, String dataType) {
-        int size = dataMaps.size();
         String path;
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        path = resultPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
-        if (osName.equals("Mac OS X")){
-            path = resultPath+"/"+dataType+"-"+dateFormat.format(now)+".xls";
+        path = resultPath + "\\" + dataType + "-" + dateFormat.format(now) + ".xls";
+        if (osName.equals("Mac OS X")) {
+            path = resultPath + "/" + dataType + "-" + dateFormat.format(now) + ".xls";
         }
         File file = new File(path);
         FileOutputStream fOut = null;
 
         try {
+            int size = dataMaps.size();
+            System.out.println("FPS收集数据完成...");
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet(dataType);
 
@@ -97,8 +99,8 @@ public abstract class GetData implements WriteExcel{
             HSSFCell cell = null;
             row.createCell(0).setCellValue(dataType);
 
-            for (rowNum=0; rowNum<size; rowNum++){
-                row = sheet.createRow((short) rowNum+1);
+            for (rowNum = 0; rowNum < size; rowNum++) {
+                row = sheet.createRow((short) rowNum + 1);
                 row.createCell(0).setCellValue(dataMaps.get(rowNum));
             }
 

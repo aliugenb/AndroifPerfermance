@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public  class Action {
+public class Action {
 
     public static AndroidDriver<AndroidElement> driver;
 
@@ -42,7 +42,7 @@ public  class Action {
         capabilities.setCapability("app", app.getAbsolutePath());
 
 //        capabilities.setCapability("automationName","uiautomator2");
-        capabilities.setCapability("noSign", true);
+//        capabilities.setCapability("noSign", true);
         //设置app的主包名和主类名
         capabilities.setCapability("appPackage", "com.fanli.android.apps");
         capabilities.setCapability("appActivity", "com.fanli.android.basicarc.ui.activity.SplashActivity");
@@ -79,7 +79,7 @@ public  class Action {
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             proc.destroy();
         }
     }
@@ -89,7 +89,7 @@ public  class Action {
         int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
         long s = (new Date()).getTime();
-        while ((new Date()).getTime()-s<formatMin(time)){
+        while ((new Date()).getTime() - s < formatMin(time)) {
             for (int i1 = 0; i1 <= 5; i1++) {
                 TouchAction action = new TouchAction(driver).press(width / 2, height * 5 / 7).waitAction().moveTo(width / 2, height * 2 / 7).release();
                 action.perform();
@@ -103,40 +103,42 @@ public  class Action {
         }
     }
 
-    public static void skipStartScreen(){
-        try{
-            if(driver.findElementById("com.fanli.android.apps:id/main_image").isDisplayed()){
+    public static void skipStartScreen() {
+        try {
+            if (driver.findElementById("com.fanli.android.apps:id/main_image").isDisplayed()) {
                 driver.findElementById("com.fanli.android.apps:id/main_image").click();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("无开机画面或已关闭");
         }
     }
-    public static void skipSplash(){
-        try{
-            while(driver.findElementById("com.fanli.android.apps:id/splash_img").isDisplayed()){
+
+    public static void skipSplash() {
+        try {
+            while (driver.findElementById("com.fanli.android.apps:id/splash_img").isDisplayed()) {
                 driver.findElementByAndroidUIAutomator("text(\"跳过\")").click();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("跳过splash");
         }
     }
-    public static void closeInterstitial(){
-        try{
-            if(driver.findElementById("com.fanli.android.apps:id/close").isDisplayed()){
+
+    public static void closeInterstitial() {
+        try {
+            if (driver.findElementById("com.fanli.android.apps:id/close").isDisplayed()) {
                 driver.findElementById("com.fanli.android.apps:id/close").click();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("弹层不存在！");
         }
     }
 
     //分钟转换成毫秒
-    public static int formatMin(int i){
+    public static int formatMin(int i) {
         int timeLong = 0;
-        if(i>0){
-            timeLong = i*60*1000;
-        }else {
+        if (i > 0) {
+            timeLong = i * 60 * 1000;
+        } else {
             System.out.println("输入错误");
         }
         return timeLong;

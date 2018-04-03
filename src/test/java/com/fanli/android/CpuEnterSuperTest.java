@@ -21,16 +21,16 @@ public class CpuEnterSuperTest extends Action {
     private boolean start = false;
 
     @Test
-    public void enterSuperTest() throws InterruptedException,IOException {
-        start = true;
+    public void enterSuperTest() throws InterruptedException, IOException {
         driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
+        start = true;
         Thread.sleep(3000);
         closeInterstitial();
         execCmd("adb shell input keyevent 4");
         Thread.sleep(3000);
         try {
             long s = (new Date()).getTime();
-            while (((new Date()).getTime()-s)<formatMin(5)){
+            while (((new Date()).getTime() - s) < formatMin(5)) {
                 execCmd("adb shell input tap 126 558");
                 Thread.sleep(3000);
                 execCmd("adb shell input keyevent 4");
@@ -40,16 +40,16 @@ public class CpuEnterSuperTest extends Action {
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
-        }finally {
+        } finally {
             start = true;
             DataSwitch.excelNormal = false;
-            DataSwitch.cpuEnd=true;
+            DataSwitch.cpuEnd = true;
         }
     }
 
     @Test
-    public void cpuMonitor() throws IOException, InterruptedException{
-        while (!start){
+    public void cpuMonitor() throws IOException, InterruptedException {
+        while (!start) {
             Thread.sleep(500);
             System.out.println("waiting");
         }
@@ -57,8 +57,8 @@ public class CpuEnterSuperTest extends Action {
     }
 
     @Test
-    public void memoryMonitor() throws IOException, InterruptedException{
-        while (!start){
+    public void memoryMonitor() throws IOException, InterruptedException {
+        while (!start) {
             Thread.sleep(500);
             System.out.println("waiting");
         }

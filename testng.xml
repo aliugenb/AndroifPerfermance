@@ -13,9 +13,9 @@
     <!--</test>-->
     <test verbose="3" preserve-order="true" parallel="methods" thread-count="2" name="9k9首页FPS">
         <classes>
-            <class name="com.fanli.android.FpsNineHomepageTest">
+            <class name="com.fanli.android.FpsSuperHomepageTest">
                 <methods>
-                    <include name="nineFpsTest"/>
+                    <include name="superFpsTest"/>
                     <include name="fpsMonitor"/>
                 </methods>
             </class>

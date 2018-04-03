@@ -21,11 +21,11 @@ public class FpsNineHomepageTest extends Action {
     @Test
     public void nineFpsTest() throws Exception {
         try {
-            driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
+            driver.findElementByAndroidUIAutomator("text(\"9k9\")").click();
             Thread.sleep(2000);
             closeInterstitial();
-            start = true;
             Thread.sleep(2000);
+            start = true;
             swipScreen(5);
         } catch (Exception e) {
             throw e;

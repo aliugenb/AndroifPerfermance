@@ -23,9 +23,9 @@ public class Cpu extends GetData {
                     proc.getInputStream()));
             StringBuffer stringBuffer = new StringBuffer();
             String line = null;
-            while ((line = in.readLine())!=null) {
-                if((line.indexOf("com.fanli.android.apps")!=-1)&&(line.indexOf("com.fanli.android.apps:")==-1)){
-                    stringBuffer.append(line+" ");
+            while ((line = in.readLine()) != null) {
+                if ((line.indexOf("com.fanli.android.apps") != -1) && (line.indexOf("com.fanli.android.apps:") == -1)) {
+                    stringBuffer.append(line + " ");
                 }
             }
             String str = stringBuffer.toString().trim();
@@ -33,7 +33,7 @@ public class Cpu extends GetData {
 
         } catch (InterruptedException e) {
             System.err.println(e);
-        }finally{
+        } finally {
             try {
                 proc.destroy();
             } catch (Exception e1) {
@@ -46,11 +46,11 @@ public class Cpu extends GetData {
     @Override
     public String handleCmd(String result) {
         System.out.println(result);
-        String reg="\\s+[0-9]+%\\s+";
+        String reg = "\\s+[0-9]+%\\s+";
         String top = null;
         Pattern p = Pattern.compile(reg);
         Matcher m = p.matcher(result);
-        if(m.find()){
+        if (m.find()) {
             top = m.group().trim();
         }
         System.out.println(top);
@@ -60,23 +60,36 @@ public class Cpu extends GetData {
     @Override
     public List<String> handleData() throws IOException, InterruptedException {
         String command = "adb shell \"top -m 8 -n 1 -d 1\"";
-        if (osName.equals("Mac OS X")){
+        if (osName.equals("Mac OS X")) {
             command = "adb shell top -m 8 -n 1 -d 1";
-        }else if(osName.indexOf("Windows")!=-1){
+        } else if (osName.indexOf("Windows") != -1) {
             command = "adb shell \"top -m 8 -n 1 -d 1\"";
         }
-        System.out.println("Cpu收集数据开始...");
         List<String> data = new ArrayList<String>();
+        System.out.println("Cpu收集数据开始...");
 
-        while (!DataSwitch.cpuEnd){
-            System.out.println("Cpu收集数据中...");
-            String cpu=execCommand(command);
-            if(cpu!=null){
-                data.add(cpu);
+        while (true) {
+            try {
+                if (DataSwitch.excelNormal) {
+                    while (!DataSwitch.cpuEnd) {
+                        System.out.println("Cpu收集数据中...");
+                        String cpu = execCommand(command);
+                        if (cpu != null) {
+                            data.add(cpu);
+                        } else {
+                            throw new DataException("Cpu数据异常");
+                        }
+                        Thread.sleep(5000);
+                    }
+                } else {
+                    throw new DataException("Cpu数据收集失败");
+                }
+            } catch (Exception e) {
+                System.err.println(e);
+                data = null;
+                break;
             }
-            Thread.sleep(5000);
         }
-        System.out.println("Cpu收集数据完成...");
         return data;
     }
 }

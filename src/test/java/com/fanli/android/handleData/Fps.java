@@ -23,47 +23,41 @@ public class Fps extends GetData {
     @Override
     public List<String> handleData() throws IOException, InterruptedException {
         String command = "adb shell \"dumpsys gfxinfo com.fanli.android.apps reset | grep frames\"";
-        if (osName.equals("Mac OS X")){
+        if (osName.equals("Mac OS X")) {
             command = "adb shell dumpsys gfxinfo com.fanli.android.apps reset | grep frames";
-        }else if(osName.indexOf("Windows")!= -1){
+        } else if (osName.indexOf("Windows") != -1) {
             command = "adb shell \"dumpsys gfxinfo com.fanli.android.apps reset | grep frames\"";
         }
-        System.out.println("FPS收集数据开始...");
         List<String> data = new ArrayList<String>();
-//        try {
-            while (!DataSwitch.fpsEnd){
-                try {
-                    if (DataSwitch.excelNormal) {
+        System.out.println("FPS收集数据开始...");
+        while (true) {
+            try {
+                if (DataSwitch.excelNormal) {
+                    while (!DataSwitch.fpsEnd) {
                         System.out.println("FPS收集数据中...");
-                        String fps=execCommand(command);
+                        String fps = execCommand(command);
                         System.out.println(fps);
-                        if(fps!=null){
-                            String total = fps.substring(fps.indexOf("rendered:")+10, fps.indexOf("Janky")-1);
-                            String janky = fps.substring(fps.indexOf("Janky frames:")+14, fps.indexOf("(")-1);
-                            String percent = fps.substring(fps.indexOf("(")+1, fps.indexOf(")"));
+                        if (fps != null && fps.indexOf("Total frames rendered")!=-1) {
+                            String total = fps.substring(fps.indexOf("rendered:") + 10, fps.indexOf("Janky") - 1);
+                            String janky = fps.substring(fps.indexOf("Janky frames:") + 14, fps.indexOf("(") - 1);
+                            String percent = fps.substring(fps.indexOf("(") + 1, fps.indexOf(")"));
 
-                            String result = total+","+janky+","+percent+",";
+                            String result = total + "," + janky + "," + percent + ",";
                             data.add(result);
+                            Thread.sleep(4000);
+                        }else {
+                            throw new DataException("Fps数据异常");
                         }
-                        Thread.sleep(4000);
-                    } else {
-                        throw new Exception("excel数据生成失败");
                     }
-                } catch (Exception e) {
-                    data = null;
-                    e.printStackTrace();
-                    break;
+                } else {
+                    throw new DataException("Fps数据收集失败");
                 }
+            } catch (Exception e) {
+                System.err.println(e);
+                data = null;
+                break;
             }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (excelException e) {
-//            e.printStackTrace();
-//            data = null;
-//        }
-        System.out.println("FPS收集数据完成...");
+        }
         return data;
     }
 
@@ -72,9 +66,9 @@ public class Fps extends GetData {
         String path;
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        path = resultPath+"\\"+dataType+"-"+dateFormat.format(now)+".xls";
-        if (osName.equals("Mac OS X")){
-            path = resultPath+"/"+dataType+"-"+dateFormat.format(now)+".xls";
+        path = resultPath + "\\" + dataType + "-" + dateFormat.format(now) + ".xls";
+        if (osName.equals("Mac OS X")) {
+            path = resultPath + "/" + dataType + "-" + dateFormat.format(now) + ".xls";
         }
 
         File file = new File(path);
@@ -82,26 +76,26 @@ public class Fps extends GetData {
 
         try {
             int size = dataMaps.size();
-
+            System.out.println("FPS收集数据完成...");
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet(dataType);
 
-            // 行标
+//             行标
             int rowNum;
-            // 列标
+//             列标
 //            int colNum;
 
             HSSFRow row = sheet.createRow(0);
-            // 单元格
+//             单元格
             HSSFCell cell = null;
             String[] title = {"Total frames rendered", "Janky frames", "percent"};
-            for(int i=0;i<title.length;i++){
+            for (int i = 0; i < title.length; i++) {
                 cell = row.createCell(i);
                 cell.setCellValue(title[i]);
             }
 
-            for (rowNum=0; rowNum<size; rowNum++){
-                row = sheet.createRow((short) rowNum+1);
+            for (rowNum = 0; rowNum < size; rowNum++) {
+                row = sheet.createRow((short) rowNum + 1);
                 String cellData = dataMaps.get(rowNum);
                 String[] cellDatas = cellData.split(",");
                 cell = row.createCell(0);
@@ -112,12 +106,12 @@ public class Fps extends GetData {
                 cell.setCellValue(cellDatas[2]);
             }
 
-            // 新建一输出文件流
+//             新建一输出文件流
             fOut = new FileOutputStream(file);
-            // 把相应的Excel 工作簿存盘
+//             把相应的Excel 工作簿存盘
             workbook.write(fOut);
             fOut.flush();
-            // 操作结束，关闭文件
+//             操作结束，关闭文件
             fOut.close();
 
             System.out.println("Excel文件生成成功！Excel文件名：" + file.getAbsolutePath());

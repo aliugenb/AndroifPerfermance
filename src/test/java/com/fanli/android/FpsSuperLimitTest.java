@@ -15,7 +15,7 @@ import java.io.IOException;
  * 超级返限量秒杀FPS
  */
 
-public class FpsSuperLimitTest extends Action{
+public class FpsSuperLimitTest extends Action {
     private static boolean start = false;
 
     @Test
@@ -33,13 +33,13 @@ public class FpsSuperLimitTest extends Action{
             throw e;
         } finally {
             start = true;
-            DataSwitch.fpsEnd=true;
+            DataSwitch.fpsEnd = true;
         }
     }
 
     @Test
-    public void fpsMonitor() throws IOException, InterruptedException{
-        while (!start){
+    public void fpsMonitor() throws IOException, InterruptedException {
+        while (!start) {
             Thread.sleep(500);
             System.out.println("waiting");
         }

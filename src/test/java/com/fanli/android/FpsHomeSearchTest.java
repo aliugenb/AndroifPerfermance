@@ -15,7 +15,7 @@ import java.io.IOException;
  * 主搜fps测试
  */
 
-public class FpsHomeSearchTest extends Action{
+public class FpsHomeSearchTest extends Action {
     private boolean start = false;
 
     @Test
@@ -27,19 +27,19 @@ public class FpsHomeSearchTest extends Action{
             Thread.sleep(2000);
             driver.findElementByAndroidUIAutomator("text(\"搜索\")").click();
             Thread.sleep(3000);
-            start=true;
+            start = true;
             swipScreen(5);
         } catch (Exception e) {
             throw e;
         } finally {
             start = true;
-            DataSwitch.fpsEnd=true;
+            DataSwitch.fpsEnd = true;
         }
     }
 
     @Test
-    public void fpsMonitor() throws IOException, InterruptedException{
-        while (!start){
+    public void fpsMonitor() throws IOException, InterruptedException {
+        while (!start) {
             Thread.sleep(500);
             System.out.println("waiting");
         }
