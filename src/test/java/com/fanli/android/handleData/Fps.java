@@ -37,7 +37,7 @@ public class Fps extends GetData {
                         System.out.println("FPS收集数据中...");
                         String fps = execCommand(command);
                         System.out.println(fps);
-                        if (fps != null && fps.indexOf("Total frames rendered")!=-1) {
+                        if (fps != null && fps.indexOf("Total frames rendered") != -1) {
                             String total = fps.substring(fps.indexOf("rendered:") + 10, fps.indexOf("Janky") - 1);
                             String janky = fps.substring(fps.indexOf("Janky frames:") + 14, fps.indexOf("(") - 1);
                             String percent = fps.substring(fps.indexOf("(") + 1, fps.indexOf(")"));
@@ -75,7 +75,7 @@ public class Fps extends GetData {
 
         try {
             int size = dataMaps.size();
-            System.out.println(dataType+"收集数据完成...");
+            System.out.println(dataType + "收集数据完成...");
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet(dataType);
 

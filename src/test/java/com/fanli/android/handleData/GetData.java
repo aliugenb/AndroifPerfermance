@@ -84,7 +84,7 @@ public abstract class GetData implements WriteExcel {
 
         try {
             int size = dataMaps.size();
-            System.out.println(dataType+"收集完成...");
+            System.out.println(dataType + "收集完成...");
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet(dataType);
 

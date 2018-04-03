@@ -47,12 +47,11 @@ public class CpuEnterSuperTest extends Action {
             e.printStackTrace();
             DataSwitch.excelNormal = false;
             throw e;
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             DataSwitch.excelNormal = false;
             throw e;
-        }
-        finally {
+        } finally {
             start = true;
             DataSwitch.cpuEnd = true;
             DataSwitch.memoryEnd = true;

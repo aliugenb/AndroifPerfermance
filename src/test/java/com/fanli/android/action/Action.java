@@ -89,7 +89,7 @@ public class Action {
     }
 
     //根据设定时长滑动页面
-    public static void swipScreen(int time) throws InterruptedException {
+    public static void swipScreenByTime(int time) throws InterruptedException {
         int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
         long s = (new Date()).getTime();
