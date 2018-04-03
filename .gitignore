@@ -1,3 +1,12 @@
 .idea/
 apps/*.apk
 out/
+*.iml
+.gradle
+/local.properties
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.idea/
+/src/test/result/
