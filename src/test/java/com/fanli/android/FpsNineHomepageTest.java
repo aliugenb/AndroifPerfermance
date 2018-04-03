@@ -22,12 +22,12 @@ public class FpsNineHomepageTest extends Action {
     @Test
     public void nineHomepage() throws Exception {
         try {
-            driver.findElementByAndroidUIAutomator("text(\"9k9\")").click();
+            driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
             Thread.sleep(2000);
             closeInterstitial();
             Thread.sleep(2000);
             start = true;
-            swipScreenByTime(5);
+            swipScreenByTime(2);
         } catch (NoSuchElementException e) {
             DataSwitch.excelNormal = false;
             throw e;
