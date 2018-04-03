@@ -11,6 +11,7 @@ package com.fanli.android;
 import com.fanli.android.action.Action;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Fps;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class FpsNineHomepageTest extends Action {
     private boolean start = false;
 
     @Test
-    public void nineFpsTest() throws Exception {
+    public void nineHomepage() throws Exception {
         try {
             driver.findElementByAndroidUIAutomator("text(\"9k9\")").click();
             Thread.sleep(2000);
@@ -27,8 +28,10 @@ public class FpsNineHomepageTest extends Action {
             Thread.sleep(2000);
             start = true;
             swipScreenByTime(5);
+        } catch (NoSuchElementException e) {
+            DataSwitch.excelNormal = false;
+            throw e;
         } catch (InterruptedException e) {
-            e.printStackTrace();
             DataSwitch.excelNormal = false;
             throw e;
         } finally {

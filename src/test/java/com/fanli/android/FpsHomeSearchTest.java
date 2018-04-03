@@ -3,6 +3,7 @@ package com.fanli.android;
 import com.fanli.android.action.Action;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Fps;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -29,8 +30,10 @@ public class FpsHomeSearchTest extends Action {
             Thread.sleep(3000);
             start = true;
             swipScreenByTime(5);
+        } catch (NoSuchElementException e) {
+            DataSwitch.excelNormal = false;
+            throw e;
         } catch (InterruptedException e) {
-            e.printStackTrace();
             DataSwitch.excelNormal = false;
             throw e;
         } finally {

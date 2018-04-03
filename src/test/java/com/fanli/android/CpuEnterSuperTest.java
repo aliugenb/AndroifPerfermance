@@ -23,7 +23,7 @@ public class CpuEnterSuperTest extends Action {
     private boolean start = false;
 
     @Test
-    public void enterSuperTest() throws InterruptedException, IOException {
+    public void enterSuper() throws InterruptedException, IOException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
             start = true;
@@ -44,11 +44,9 @@ public class CpuEnterSuperTest extends Action {
             DataSwitch.excelNormal = false;
             throw e;
         } catch (InterruptedException e) {
-            e.printStackTrace();
             DataSwitch.excelNormal = false;
             throw e;
         } catch (IOException e) {
-            e.printStackTrace();
             DataSwitch.excelNormal = false;
             throw e;
         } finally {
