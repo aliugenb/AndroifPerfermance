@@ -28,8 +28,10 @@ public class FpsSuperLimitTest extends Action {
             driver.findElementByAndroidUIAutomator("text(\"限量秒杀\")").click();
             Thread.sleep(3000);
             start = true;
-            swipScreen(5);
-        } catch (Exception e) {
+            swipScreen(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            DataSwitch.excelNormal = false;
             throw e;
         } finally {
             start = true;

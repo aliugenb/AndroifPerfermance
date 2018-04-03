@@ -41,10 +41,10 @@ public class Memory extends GetData {
                         String memory = execCommand(command);
                         if (memory != null) {
                             data.add(memory);
-                        } else {
-                            throw new DataException("Memory数据异常");
                         }
+                        Thread.sleep(1000);
                     }
+                    break;
                 } else {
                     throw new DataException("Memory数据收集失败");
                 }

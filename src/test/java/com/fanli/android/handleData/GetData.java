@@ -15,7 +15,6 @@ public abstract class GetData implements WriteExcel {
     public static String resultPath;
 
     static {
-
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "src");
         File testDir = new File(appDir, "test");
@@ -85,7 +84,7 @@ public abstract class GetData implements WriteExcel {
 
         try {
             int size = dataMaps.size();
-            System.out.println("FPS收集数据完成...");
+            System.out.println(dataType+"收集完成...");
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet(dataType);
 

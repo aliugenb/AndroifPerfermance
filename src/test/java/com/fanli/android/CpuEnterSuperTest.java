@@ -3,6 +3,8 @@ package com.fanli.android;
 import com.fanli.android.action.Action;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
+import com.fanli.android.handleData.Memory;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -22,28 +24,38 @@ public class CpuEnterSuperTest extends Action {
 
     @Test
     public void enterSuperTest() throws InterruptedException, IOException {
-        driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
-        start = true;
-        Thread.sleep(3000);
-        closeInterstitial();
-        execCmd("adb shell input keyevent 4");
-        Thread.sleep(3000);
         try {
+            driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
+            start = true;
+            Thread.sleep(3000);
+            closeInterstitial();
+            Thread.sleep(2000);
+            execCmd("adb shell input keyevent 4");
+            Thread.sleep(2000);
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(5)) {
+            while (((new Date()).getTime() - s) < formatMin(2)) {
                 execCmd("adb shell input tap 126 558");
-                Thread.sleep(3000);
+                Thread.sleep(2000);
                 execCmd("adb shell input keyevent 4");
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             }
             Thread.sleep(formatMin(2));
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        } finally {
-            start = true;
+        } catch (NoSuchElementException e) {
             DataSwitch.excelNormal = false;
+            throw e;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            DataSwitch.excelNormal = false;
+            throw e;
+        } catch (IOException e){
+            e.printStackTrace();
+            DataSwitch.excelNormal = false;
+            throw e;
+        }
+        finally {
+            start = true;
             DataSwitch.cpuEnd = true;
+            DataSwitch.memoryEnd = true;
         }
     }
 
@@ -62,6 +74,6 @@ public class CpuEnterSuperTest extends Action {
             Thread.sleep(500);
             System.out.println("waiting");
         }
-        new Cpu().writeExcel("首页进入超级返Memory");
+        new Memory().writeExcel("首页进入超级返Memory");
     }
 }

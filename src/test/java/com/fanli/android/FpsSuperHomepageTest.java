@@ -26,8 +26,10 @@ public class FpsSuperHomepageTest extends Action {
             closeInterstitial();
             Thread.sleep(2000);
             start = true;
-            swipScreen(5);
-        } catch (Exception e) {
+            swipScreen(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            DataSwitch.excelNormal = false;
             throw e;
         } finally {
             start = true;

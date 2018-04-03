@@ -27,11 +27,12 @@ public class FpsNineHomepageTest extends Action {
             Thread.sleep(2000);
             start = true;
             swipScreen(5);
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            DataSwitch.excelNormal = false;
             throw e;
         } finally {
             start = true;
-            DataSwitch.excelNormal = false;
             DataSwitch.fpsEnd=true;
         }
     }

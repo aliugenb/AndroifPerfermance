@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <!--<test verbose="5" preserve-order="true" parallel="methods" thread-count="3" name="超级返首页FPS">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuEnterSuperTest">-->
-                <!--<methods>-->
-                    <!--<include name="enterSuperTest"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test verbose="5" preserve-order="true" parallel="methods" thread-count="3" name="超级返首页FPS">
+        <classes>
+            <class name="com.fanli.android.CpuEnterSuperTest">
+                <methods>
+                    <include name="enterSuperTest"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
     <test verbose="3" preserve-order="true" parallel="methods" thread-count="2" name="9k9首页FPS">
         <classes>
             <class name="com.fanli.android.FpsSuperHomepageTest">

@@ -76,11 +76,10 @@ public class Cpu extends GetData {
                         String cpu = execCommand(command);
                         if (cpu != null) {
                             data.add(cpu);
-                        } else {
-                            throw new DataException("Cpu数据异常");
                         }
                         Thread.sleep(5000);
                     }
+                    break;
                 } else {
                     throw new DataException("Cpu数据收集失败");
                 }

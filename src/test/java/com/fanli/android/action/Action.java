@@ -30,7 +30,7 @@ public class Action {
 
         //设置自动化相关参数
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("noReset", false);
         //  capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("device", "Android");
         capabilities.setCapability("platformName", "Android");
@@ -40,6 +40,10 @@ public class Action {
         capabilities.setCapability("platformVersion", platformVersion);
         //设置apk路径
         capabilities.setCapability("app", app.getAbsolutePath());
+
+
+        //设置新的命令等待时长（应该用不到，设置1h）
+        capabilities.setCapability("newCommandTimeout", 3600);
 
 //        capabilities.setCapability("automationName","uiautomator2");
 //        capabilities.setCapability("noSign", true);
@@ -107,6 +111,7 @@ public class Action {
         try {
             if (driver.findElementById("com.fanli.android.apps:id/main_image").isDisplayed()) {
                 driver.findElementById("com.fanli.android.apps:id/main_image").click();
+                System.out.println("跳过开机画面");
             }
         } catch (Exception e) {
             System.out.println("无开机画面或已关闭");
@@ -117,9 +122,10 @@ public class Action {
         try {
             while (driver.findElementById("com.fanli.android.apps:id/splash_img").isDisplayed()) {
                 driver.findElementByAndroidUIAutomator("text(\"跳过\")").click();
+                System.out.println("跳过splash");
             }
         } catch (Exception e) {
-            System.out.println("跳过splash");
+            System.out.println("无splash");
         }
     }
 
@@ -127,6 +133,7 @@ public class Action {
         try {
             if (driver.findElementById("com.fanli.android.apps:id/close").isDisplayed()) {
                 driver.findElementById("com.fanli.android.apps:id/close").click();
+                System.out.println("关闭弹层");
             }
         } catch (Exception e) {
             System.out.println("弹层不存在！");

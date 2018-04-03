@@ -45,10 +45,9 @@ public class Fps extends GetData {
                             String result = total + "," + janky + "," + percent + ",";
                             data.add(result);
                             Thread.sleep(4000);
-                        }else {
-                            throw new DataException("Fps数据异常");
                         }
                     }
+                    break;
                 } else {
                     throw new DataException("Fps数据收集失败");
                 }
@@ -76,7 +75,7 @@ public class Fps extends GetData {
 
         try {
             int size = dataMaps.size();
-            System.out.println("FPS收集数据完成...");
+            System.out.println(dataType+"收集数据完成...");
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet(dataType);
 
