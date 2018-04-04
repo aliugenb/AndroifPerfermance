@@ -30,6 +30,7 @@ public class Fps extends GetData {
         }
         List<String> data = new ArrayList<String>();
         System.out.println("FPS收集数据开始...");
+
         while (true) {
             try {
                 if (DataSwitch.excelNormal) {

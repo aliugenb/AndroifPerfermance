@@ -30,15 +30,10 @@ public class FpsSuperLimitTest extends Action {
             Thread.sleep(3000);
             start = true;
             swipScreenByTime(5);
-        } catch (NoSuchElementException e) {
-            System.out.println("NoSuchElementException e");
+        } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
-        } catch (InterruptedException e) {
-            System.out.println("InterruptedException e");
-            DataSwitch.excelNormal = false;
-            throw e;
-        } finally {
+        }finally {
             start = true;
             DataSwitch.fpsEnd = true;
         }

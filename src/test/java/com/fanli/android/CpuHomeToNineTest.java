@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.KEY;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -16,10 +17,10 @@ import java.util.Date;
  * Author: ye.liu
  * Date: 2018/4/3
  * Time: 17:38
- *首页反复进入9k9检查cpu和memory
+ * 首页反复进入9k9检查cpu和memory
  */
 
-public class CpuHomeToNineTest extends Action{
+public class CpuHomeToNineTest extends Action {
     private boolean start = false;
 
     @Test
@@ -30,23 +31,17 @@ public class CpuHomeToNineTest extends Action{
             Thread.sleep(3000);
             closeInterstitial();
             Thread.sleep(2000);
-            execCmd("adb shell input keyevent 4");
+            pressKey(KEY.BACK);
             Thread.sleep(2000);
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(2)) {
-                execCmd("adb shell input tap 531 596");
+            while (((new Date()).getTime() - s) < formatMin(5)) {
+                pressKey(KEY.NINE);
                 Thread.sleep(2000);
-                execCmd("adb shell input keyevent 4");
+                pressKey(KEY.BACK);
                 Thread.sleep(2000);
             }
             Thread.sleep(formatMin(2));
-        } catch (NoSuchElementException e) {
-            DataSwitch.excelNormal = false;
-            throw e;
-        } catch (InterruptedException e) {
-            DataSwitch.excelNormal = false;
-            throw e;
-        } catch (IOException e) {
+        } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
         } finally {

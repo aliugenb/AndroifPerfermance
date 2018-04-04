@@ -1,5 +1,6 @@
 package com.fanli.android.action;
 
+import com.fanli.android.handleData.DataSwitch;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -30,7 +31,7 @@ public class Action {
 
         //设置自动化相关参数
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("noReset", false);
+        capabilities.setCapability("noReset", true);
         //  capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("device", "Android");
         capabilities.setCapability("platformName", "Android");
@@ -69,6 +70,10 @@ public class Action {
 
     @AfterTest
     public static void tearDown() throws Exception {
+        DataSwitch.fpsEnd = false;
+        DataSwitch.cpuEnd = false;
+        DataSwitch.memoryEnd = false;
+        DataSwitch.excelNormal = true;
         driver.quit();
     }
 
@@ -104,6 +109,25 @@ public class Action {
                 action1.perform();
                 Thread.sleep(1000);
             }
+        }
+    }
+
+    public static void pressKey(KEY keyCode) throws IOException {
+        if (keyCode.equals(KEY.SEARCH)) {
+            //首页点击主搜位置坐标
+            execCmd("adb shell input tap 490 140");
+        } else if (keyCode.equals(KEY.SUPER)) {
+            //首页点击超级返位置坐标
+            execCmd("adb shell input tap 126 558");
+        } else if (keyCode.equals(KEY.NINE)) {
+            //首页点击9k9位置坐标
+            execCmd("adb shell input tap 531 596");
+        } else if (keyCode.equals(KEY.BACK)) {
+            //点击返回键
+            execCmd("adb shell input keyevent 4");
+        } else if (keyCode.equals(KEY.HOME)) {
+            //点击HOME键
+            execCmd("adb shell input keyevent 3");
         }
     }
 

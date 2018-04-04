@@ -30,10 +30,7 @@ public class FpsHomeSearchTest extends Action {
             Thread.sleep(3000);
             start = true;
             swipScreenByTime(5);
-        } catch (NoSuchElementException e) {
-            DataSwitch.excelNormal = false;
-            throw e;
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
         } finally {

@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入超级返检查cpu和memory">-->
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入9k9检查cpu和memory">-->
         <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuHomeToSuperTest">-->
+            <!--<class name="com.fanli.android.CpuHomeToNineTest">-->
                 <!--<methods>-->
-                    <!--<include name="enterSuper"/>-->
+                    <!--<include name="enterNine"/>-->
                     <!--<include name="cpuMonitor"/>-->
                     <!--<include name="memoryMonitor"/>-->
                 <!--</methods>-->
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入9k9检查cpu和memory">-->
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入主搜检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuHomeToSeachTest">
+                <methods>
+                    <include name="enterSeach"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入超级返检查cpu和memory">-->
         <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuHomeToNineTest">-->
+            <!--<class name="com.fanli.android.CpuHomeToSuperTest">-->
                 <!--<methods>-->
-                    <!--<include name="enterNine"/>-->
+                    <!--<include name="enterSuper"/>-->
                     <!--<include name="cpuMonitor"/>-->
                     <!--<include name="memoryMonitor"/>-->
                 <!--</methods>-->
@@ -32,26 +43,26 @@
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-    <test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="9k9首页fps测试">
-        <classes>
-            <class name="com.fanli.android.FpsNineHomepageTest">
-                <methods>
-                    <include name="nineHomepage"/>
-                    <include name="fpsMonitor"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="超级返首页fps">
-        <classes>
-            <class name="com.fanli.android.FpsSuperHomepageTest">
-                <methods>
-                    <include name="superHomepage"/>
-                    <include name="fpsMonitor"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="9k9首页fps测试">-->
+        <!--<classes>-->
+            <!--<class name="com.fanli.android.FpsNineHomepageTest">-->
+                <!--<methods>-->
+                    <!--<include name="nineHomepage"/>-->
+                    <!--<include name="fpsMonitor"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="超级返首页fps">-->
+        <!--<classes>-->
+            <!--<class name="com.fanli.android.FpsSuperHomepageTest">-->
+                <!--<methods>-->
+                    <!--<include name="superHomepage"/>-->
+                    <!--<include name="fpsMonitor"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
     <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="超级返限量秒杀FPS">-->
         <!--<classes>-->
             <!--<class name="com.fanli.android.FpsSuperLimitTest">-->
