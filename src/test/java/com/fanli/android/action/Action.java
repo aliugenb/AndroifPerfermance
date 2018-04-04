@@ -31,7 +31,7 @@ public class Action {
 
         //设置自动化相关参数
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("noReset", true);
+        capabilities.setCapability("noReset", false);
         //  capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("device", "Android");
         capabilities.setCapability("platformName", "Android");
@@ -46,15 +46,17 @@ public class Action {
         //设置新的命令等待时长（应该用不到，设置1h）
         capabilities.setCapability("newCommandTimeout", 3600);
 
+        //使用自带输入法，输入中文
+        capabilities.setCapability("unicodeKeyboard", true);
+        capabilities.setCapability("resetKeyboard", true);
+
 //        capabilities.setCapability("automationName","uiautomator2");
 //        capabilities.setCapability("noSign", true);
         //设置app的主包名和主类名
         capabilities.setCapability("appPackage", "com.fanli.android.apps");
         capabilities.setCapability("appActivity", "com.fanli.android.basicarc.ui.activity.SplashActivity");
 
-        //使用自带输入法，输入中文
-        capabilities.setCapability("unicodeKeyboard", true);
-        capabilities.setCapability("resetKeyboard", true);
+
 
         //初始化
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
