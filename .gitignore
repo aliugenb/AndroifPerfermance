@@ -9,4 +9,4 @@ out/
 /captures
 .externalNativeBuild
 .idea/
-/src/test/result/*.*
+/src/test/result/*.xls
