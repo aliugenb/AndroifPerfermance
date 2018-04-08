@@ -5,7 +5,7 @@ package com.fanli.android.action;
  * Author: ye.liu
  * Date: 2018/4/2
  * Time: 18:22
- * excel报错信息
+ * 自定义报错信息
  */
 
 public class MyException extends Exception {

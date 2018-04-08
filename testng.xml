@@ -44,9 +44,20 @@
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页切换Tabbar检查cpu和memory">
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页切换Tabbar检查cpu和memory">-->
+        <!--<classes>-->
+            <!--<class name="com.fanli.android.CpuSwitchHomeTabBarTest">-->
+                <!--<methods>-->
+                    <!--<include name="switchTabBar"/>-->
+                    <!--<include name="cpuMonitor"/>-->
+                    <!--<include name="memoryMonitor"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返切换Tabbar检查cpu和memory">
         <classes>
-            <class name="com.fanli.android.CpuSwitchHomeTabBarTest">
+            <class name="com.fanli.android.CpuSwitchSuperTabBarTest">
                 <methods>
                     <include name="switchTabBar"/>
                     <include name="cpuMonitor"/>

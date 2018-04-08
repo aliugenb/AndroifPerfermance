@@ -104,23 +104,20 @@ public class Action {
         driver.findElementById("com.fanli.android.apps:id/login_password").sendKeys("fanli123");
         Thread.sleep(2000);
         driver.findElementById("com.fanli.android.apps:id/btn_login").click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         try {
             if(driver.findElementById("com.fanli.android.apps:id/btn_login").isDisplayed()){
-                System.out.println(11111);
                 throw new MyException("登录失败");
-            }else {
-                System.out.println("登录成功");
             }
         } catch (NoSuchElementException e) {
-            e.printStackTrace();
+            System.out.println("登录成功");
         }catch (MyException e) {
             System.err.println(e);
             throw e;
         }
     }
 
-    public List<AndroidElement> getElementsByresourceId(String resourceId) {
+    public List<AndroidElement> getElementsByResourceId(String resourceId) {
         List<AndroidElement> lis = driver.findElementsById(resourceId);
         return lis;
     }
