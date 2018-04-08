@@ -8,5 +8,4 @@ out/
 /build
 /captures
 .externalNativeBuild
-.idea/
 /src/test/result/*.xls
