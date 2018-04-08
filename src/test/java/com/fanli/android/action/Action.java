@@ -11,9 +11,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +38,7 @@ public class Action {
 
         //设置自动化相关参数
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("noReset", false);
+        capabilities.setCapability("noReset", true);
         //  capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("device", "Android");
         capabilities.setCapability("platformName", "Android");
@@ -154,11 +157,18 @@ public class Action {
         } else if (keyCode.equals(KEY.BACK)) {
             //点击返回键
             execCmd("adb shell input keyevent 4");
-        } else if (keyCode.equals(KEY.HOME)) {
+        } else if (keyCode.equals(KEY.ENTER)) {
+            //点击HOME键
+            execCmd("adb shell input keyevent 66");
+        }else if (keyCode.equals(KEY.HOME)) {
             //点击HOME键
             execCmd("adb shell input keyevent 3");
         }
     }
+
+//    public static void excuteInput() throws IOException {
+//        soutexecCmd("adb shell ime list -s");
+//    }
 
     public static void skipStartScreen() {
         try {
@@ -191,6 +201,46 @@ public class Action {
         } catch (Exception e) {
             System.out.println("弹层不存在！");
         }
+    }
+
+    //获取非appium带的输入法
+    public static String inputMethod() throws IOException, MyException {
+        String inputMethod = null;
+        List<String> inputMethods = new ArrayList<>();
+        Runtime runtime = Runtime.getRuntime();
+        Process proc = runtime.exec("adb shell ime list -s");
+        try {
+            if (proc.waitFor() != 0) {
+                System.err.println("exit value = " + proc.exitValue());
+            }
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    proc.getInputStream()));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                inputMethods.add(line.toString().trim());
+            }
+
+            if (inputMethods.size()==inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")){
+                throw new MyException("请安装其他三方输入法");
+            }else {
+                if(inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")>0){
+                    inputMethod = inputMethods.get(0);
+                }else if(inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")==0){
+                    inputMethod = inputMethods.get(0);
+                }else {
+                    throw new MyException("没有安装appium输入法");
+                }
+            }
+        } catch (InterruptedException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                proc.destroy();
+            } catch (Exception e1) {
+                System.err.print(e1);
+            }
+        }
+        return inputMethod;
     }
 
     //分钟转换成毫秒

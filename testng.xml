@@ -44,6 +44,17 @@
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返搜索滑动检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSuperSearchTest">
+                <methods>
+                    <include name="swipSuperSearch"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
     <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页切换Tabbar检查cpu和memory">-->
         <!--<classes>-->
             <!--<class name="com.fanli.android.CpuSwitchHomeTabBarTest">-->
@@ -55,17 +66,17 @@
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返切换Tabbar检查cpu和memory">
-        <classes>
-            <class name="com.fanli.android.CpuSwitchSuperTabBarTest">
-                <methods>
-                    <include name="switchTabBar"/>
-                    <include name="cpuMonitor"/>
-                    <include name="memoryMonitor"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返切换Tabbar检查cpu和memory">-->
+        <!--<classes>-->
+            <!--<class name="com.fanli.android.CpuSwitchSuperTabBarTest">-->
+                <!--<methods>-->
+                    <!--<include name="switchTabBar"/>-->
+                    <!--<include name="cpuMonitor"/>-->
+                    <!--<include name="memoryMonitor"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
     <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="主搜fps测试">-->
         <!--<classes>-->
             <!--<class name="com.fanli.android.FpsHomeSearchTest">-->
