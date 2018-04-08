@@ -1,5 +1,6 @@
 package com.fanli.android.handleData;
 
+import com.fanli.android.action.MyException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -50,7 +51,7 @@ public class Fps extends GetData {
                     }
                     break;
                 } else {
-                    throw new DataException("Fps数据收集失败");
+                    throw new MyException("Fps数据收集失败");
                 }
             } catch (Exception e) {
                 System.err.println(e);

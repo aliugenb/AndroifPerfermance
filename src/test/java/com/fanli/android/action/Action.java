@@ -4,6 +4,9 @@ import com.fanli.android.handleData.DataSwitch;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.apache.poi.ss.formula.functions.T;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Action {
@@ -57,7 +61,6 @@ public class Action {
         capabilities.setCapability("appActivity", "com.fanli.android.basicarc.ui.activity.SplashActivity");
 
 
-
         //初始化
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
@@ -95,8 +98,35 @@ public class Action {
         }
     }
 
+    public static void login() throws InterruptedException, MyException {
+        driver.findElementById("com.fanli.android.apps:id/login_username").sendKeys("hitest");
+        Thread.sleep(2000);
+        driver.findElementById("com.fanli.android.apps:id/login_password").sendKeys("fanli123");
+        Thread.sleep(2000);
+        driver.findElementById("com.fanli.android.apps:id/btn_login").click();
+        Thread.sleep(5000);
+        try {
+            if(driver.findElementById("com.fanli.android.apps:id/btn_login").isDisplayed()){
+                System.out.println(11111);
+                throw new MyException("登录失败");
+            }else {
+                System.out.println("登录成功");
+            }
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }catch (MyException e) {
+            System.err.println(e);
+            throw e;
+        }
+    }
+
+    public List<AndroidElement> getElementsByresourceId(String resourceId) {
+        List<AndroidElement> lis = driver.findElementsById(resourceId);
+        return lis;
+    }
+
     //根据设定时长滑动页面
-    public static void swipScreenByTime(int time) throws InterruptedException {
+    public static void swipUpAndDownByTime(int time) throws InterruptedException {
         int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
         long s = (new Date()).getTime();

@@ -1,5 +1,7 @@
 package com.fanli.android.handleData;
 
+import com.fanli.android.action.MyException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -81,7 +83,7 @@ public class Cpu extends GetData {
                     }
                     break;
                 } else {
-                    throw new DataException("Cpu数据收集失败");
+                    throw new MyException("Cpu数据收集失败");
                 }
             } catch (Exception e) {
                 System.err.println(e);

@@ -1,5 +1,7 @@
 package com.fanli.android.handleData;
 
+import com.fanli.android.action.MyException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class Memory extends GetData {
                     }
                     break;
                 } else {
-                    throw new DataException("Memory数据收集失败");
+                    throw new MyException("Memory数据收集失败");
                 }
             } catch (Exception e) {
                 System.err.println(e);

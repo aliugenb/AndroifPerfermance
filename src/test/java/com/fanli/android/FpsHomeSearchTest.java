@@ -29,7 +29,7 @@ public class FpsHomeSearchTest extends Action {
             driver.findElementByAndroidUIAutomator("text(\"搜索\")").click();
             Thread.sleep(3000);
             start = true;
-            swipScreenByTime(5);
+            swipUpAndDownByTime(5);
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;

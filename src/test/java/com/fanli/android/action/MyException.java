@@ -1,4 +1,4 @@
-package com.fanli.android.handleData;
+package com.fanli.android.action;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,9 +8,9 @@ package com.fanli.android.handleData;
  * excel报错信息
  */
 
-public class DataException extends Exception {
+public class MyException extends Exception {
 
-    public DataException(String errorMessage) {
+    public MyException(String errorMessage) {
         super(errorMessage);
     }
 }
