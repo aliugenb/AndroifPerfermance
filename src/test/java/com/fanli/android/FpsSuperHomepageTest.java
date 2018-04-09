@@ -1,5 +1,12 @@
 package com.fanli.android;
 
+import com.fanli.android.action.Action;
+import com.fanli.android.handleData.DataSwitch;
+import com.fanli.android.handleData.Fps;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
+
 /**
  * Created with IntelliJ IDEA.
  * Author: ye.liu
@@ -7,14 +14,6 @@ package com.fanli.android;
  * Time: 18:22
  * 超级返首页fps
  */
-
-import com.fanli.android.action.Action;
-import com.fanli.android.handleData.DataSwitch;
-import com.fanli.android.handleData.Fps;
-import org.openqa.selenium.NoSuchElementException;
-import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class FpsSuperHomepageTest extends Action {
     private boolean start = false;
@@ -27,7 +26,7 @@ public class FpsSuperHomepageTest extends Action {
             closeInterstitial();
             Thread.sleep(2000);
             start = true;
-            swipUpAndDownByTime(2);
+            swipUpAndDownByTime(10);
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;

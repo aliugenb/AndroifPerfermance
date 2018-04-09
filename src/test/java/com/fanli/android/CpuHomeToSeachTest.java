@@ -35,7 +35,7 @@ public class CpuHomeToSeachTest extends Action{
             pressKey(KEY.BACK);
             Thread.sleep(1000);
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(2)) {
+            while (((new Date()).getTime() - s) < formatMin(10)) {
                 pressKey(KEY.SEARCH);
                 Thread.sleep(2000);
                 execCmd("adb shell input tap 100 457");

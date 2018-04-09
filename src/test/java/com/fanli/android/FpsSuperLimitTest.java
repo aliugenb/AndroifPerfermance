@@ -3,7 +3,6 @@ package com.fanli.android;
 import com.fanli.android.action.Action;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Fps;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -29,7 +28,7 @@ public class FpsSuperLimitTest extends Action {
             driver.findElementByAndroidUIAutomator("text(\"限量秒杀\")").click();
             Thread.sleep(3000);
             start = true;
-            swipUpAndDownByTime(5);
+            swipUpAndDownByTime(10);
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;

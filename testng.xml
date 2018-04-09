@@ -44,17 +44,39 @@
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返搜索滑动检查cpu和memory">
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返品牌列表滑动检查cpu和memory">-->
+        <!--<classes>-->
+            <!--<class name="com.fanli.android.CpuSwipSuperBrandTest">-->
+                <!--<methods>-->
+                    <!--<include name="swipSuperBrand"/>-->
+                    <!--<include name="cpuMonitor"/>-->
+                    <!--<include name="memoryMonitor"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返限量秒杀滑动检查cpu和memory">
         <classes>
-            <class name="com.fanli.android.CpuSuperSearchTest">
+            <class name="com.fanli.android.CpuSwipSuperLimitTest">
                 <methods>
-                    <include name="swipSuperSearch"/>
+                    <include name="swipSuperLimit"/>
                     <include name="cpuMonitor"/>
                     <include name="memoryMonitor"/>
                 </methods>
             </class>
         </classes>
     </test>
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返搜索滑动检查cpu和memory">-->
+        <!--<classes>-->
+            <!--<class name="com.fanli.android.CpuSwipSuperSearchTest">-->
+                <!--<methods>-->
+                    <!--<include name="swipSuperSearch"/>-->
+                    <!--<include name="cpuMonitor"/>-->
+                    <!--<include name="memoryMonitor"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
     <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页切换Tabbar检查cpu和memory">-->
         <!--<classes>-->
             <!--<class name="com.fanli.android.CpuSwitchHomeTabBarTest">-->

@@ -6,11 +6,9 @@ import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
-import io.appium.java_client.TouchAction;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,7 +18,7 @@ import java.util.Date;
  * 超级返搜索滑动检查cpu和memory
  */
 
-public class CpuSuperSearchTest extends Action {
+public class CpuSwipSuperSearchTest extends Action {
     private boolean start = false;
 
     @Test
@@ -40,7 +38,7 @@ public class CpuSuperSearchTest extends Action {
             pressKey(KEY.ENTER);
             Thread.sleep(5000);
             start = true;
-            swipUpAndDownByTime(5);
+            swipUpAndDownByTime(10);
             Thread.sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

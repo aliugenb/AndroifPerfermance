@@ -39,7 +39,7 @@ public class CpuSwitchSuperTabBarTest extends Action{
             tabBars.get(1).click();
             start = true;
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(5)) {
+            while (((new Date()).getTime() - s) < formatMin(10)) {
                 for(int i=0;i<tabBars.size();i++){
                     tabBars.get(i).click();
                     Thread.sleep(1000);

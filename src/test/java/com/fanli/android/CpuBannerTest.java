@@ -29,7 +29,7 @@ public class CpuBannerTest extends Action {
             int width = driver.manage().window().getSize().width;
             int height = driver.manage().window().getSize().height;
             long s = (new Date()).getTime();
-            while ((new Date()).getTime() - s < formatMin(5)) {
+            while ((new Date()).getTime() - s < formatMin(10)) {
                 TouchAction action = new TouchAction(driver).press(width * 4 / 5, height * 1 / 5).waitAction().moveTo(width * 1 / 6, height * 1 / 5).release();
                 action.perform();
                 Thread.sleep(2000);

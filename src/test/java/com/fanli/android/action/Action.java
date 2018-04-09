@@ -4,9 +4,7 @@ import com.fanli.android.handleData.DataSwitch;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import org.apache.poi.ss.formula.functions.T;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -131,7 +129,7 @@ public class Action {
         int height = driver.manage().window().getSize().height;
         long s = (new Date()).getTime();
         while ((new Date()).getTime() - s < formatMin(time)) {
-            for (int i1 = 0; i1 <= 5; i1++) {
+            for (int i1 = 0; i1 <= 8; i1++) {
                 TouchAction action = new TouchAction(driver).press(width / 2, height * 5 / 7).waitAction().moveTo(width / 2, height * 2 / 7).release();
                 action.perform();
                 Thread.sleep(1000);
@@ -220,13 +218,13 @@ public class Action {
                 inputMethods.add(line.toString().trim());
             }
 
-            if (inputMethods.size()==inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")){
+            if (inputMethods.size()==1 && inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")==0){
                 throw new MyException("请安装其他三方输入法");
             }else {
                 if(inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")>0){
                     inputMethod = inputMethods.get(0);
                 }else if(inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")==0){
-                    inputMethod = inputMethods.get(0);
+                    inputMethod = inputMethods.get(1);
                 }else {
                     throw new MyException("没有安装appium输入法");
                 }

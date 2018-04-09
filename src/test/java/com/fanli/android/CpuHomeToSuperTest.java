@@ -5,7 +5,6 @@ import com.fanli.android.action.KEY;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -34,7 +33,7 @@ public class CpuHomeToSuperTest extends Action {
             pressKey(KEY.BACK);
             Thread.sleep(2000);
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(2)) {
+            while (((new Date()).getTime() - s) < formatMin(10)) {
                 pressKey(KEY.SUPER);
                 Thread.sleep(2000);
                 pressKey(KEY.BACK);

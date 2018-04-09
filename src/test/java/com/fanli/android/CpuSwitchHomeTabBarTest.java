@@ -6,7 +6,6 @@ import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
 import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -33,7 +32,7 @@ public class CpuSwitchHomeTabBarTest extends Action{
             login();
             start = true;
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(5)) {
+            while (((new Date()).getTime() - s) < formatMin(10)) {
                 for(int i=0;i<tabBars.size();i++){
                     tabBars.get(i).click();
                     Thread.sleep(2000);
