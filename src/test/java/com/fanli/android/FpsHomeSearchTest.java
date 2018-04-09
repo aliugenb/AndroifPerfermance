@@ -22,11 +22,11 @@ public class FpsHomeSearchTest extends Action {
     public void homeSearch() throws InterruptedException {
         try {
             driver.findElementById("com.fanli.android.apps:id/search_bg").click();
-            Thread.sleep(2000);
+            sleep(2000);
             driver.findElementByClassName("android.widget.EditText").sendKeys("U盘");
-            Thread.sleep(2000);
+            sleep(2000);
             driver.findElementByAndroidUIAutomator("text(\"搜索\")").click();
-            Thread.sleep(3000);
+            sleep(3000);
             start = true;
             swipUpAndDownByTime(testTime);
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class FpsHomeSearchTest extends Action {
     @Test
     public void fpsMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Fps().writeExcel("主搜FPS");

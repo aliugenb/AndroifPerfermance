@@ -22,9 +22,9 @@ public class FpsNineHomepageTest extends Action {
     public void nineHomepage() throws Exception {
         try {
             driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
-            Thread.sleep(2000);
+            sleep(2000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             start = true;
             swipUpAndDownByTime(testTime);
         } catch (Exception e) {
@@ -39,7 +39,7 @@ public class FpsNineHomepageTest extends Action {
     @Test
     public void fpsMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Fps().writeExcel("9k9首页FPS");

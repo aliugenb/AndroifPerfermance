@@ -27,14 +27,14 @@ public class CpuSwitchSuperTabBarTest extends Action {
     public void switchTabBar() throws InterruptedException, IOException, MyException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"我的\")").click();
-            Thread.sleep(2000);
+            sleep(2000);
             login();
             driver.findElementByAndroidUIAutomator("text(\"首页\")").click();
-            Thread.sleep(2000);
+            sleep(2000);
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
-            Thread.sleep(2000);
+            sleep(2000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             List<AndroidElement> tabBars = getElementsByResourceId("com.fanli.android.apps:id/tvName");
             tabBars.get(1).click();
             start = true;
@@ -42,10 +42,10 @@ public class CpuSwitchSuperTabBarTest extends Action {
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 for (int i = 0; i < tabBars.size(); i++) {
                     tabBars.get(i).click();
-                    Thread.sleep(1000);
+                    sleep(1000);
                 }
             }
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -59,7 +59,7 @@ public class CpuSwitchSuperTabBarTest extends Action {
     @Test
     public void cpuMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Cpu().writeExcel("超级返切换底部barCpu");
@@ -68,7 +68,7 @@ public class CpuSwitchSuperTabBarTest extends Action {
     @Test
     public void memoryMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Memory().writeExcel("超级返切换底部barMemory");

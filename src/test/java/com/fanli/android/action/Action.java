@@ -120,6 +120,10 @@ public class Action {
         }
     }
 
+    public static void sleep(int ms) throws InterruptedException {
+        Thread.sleep(ms);
+    }
+
     public List<AndroidElement> getElementsByResourceId(String resourceId) {
         List<AndroidElement> lis = driver.findElementsById(resourceId);
         return lis;
@@ -158,13 +162,11 @@ public class Action {
             //点击返回键
             execCmd("adb shell input keyevent 4");
         } else if (keyCode.equals(KEY.ENTER)) {
-            //点击HOME键
+            //点击ENTER键
             execCmd("adb shell input keyevent 66");
         } else if (keyCode.equals(KEY.HOME)) {
             //点击HOME键
             execCmd("adb shell input keyevent 3");
-        } else {
-            execCmd("adb shell input tap " + keyCode + "");
         }
     }
 
@@ -181,7 +183,7 @@ public class Action {
 
     public static void skipSplash() {
         try {
-            while (driver.findElementById("com.fanli.android.apps:id/splash_img").isDisplayed()) {
+            if (driver.findElementById("com.fanli.android.apps:id/splash_img").isDisplayed()) {
                 driver.findElementByAndroidUIAutomator("text(\"跳过\")").click();
                 System.out.println("跳过splash");
             }
@@ -201,7 +203,7 @@ public class Action {
         }
     }
 
-    //获取非appium带的输入法
+    //获取非appium的输入法
     public static String inputMethod() throws IOException, MyException {
         String inputMethod = null;
         List<String> inputMethods = new ArrayList<>();

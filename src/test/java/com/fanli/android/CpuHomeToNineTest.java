@@ -30,19 +30,19 @@ public class CpuHomeToNineTest extends Action {
             String nineCoordinates = getCenterCoordinates(nineElement);
             nineElement.click();
             start = true;
-            Thread.sleep(3000);
+            sleep(3000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             pressKey(KEY.BACK);
-            Thread.sleep(2000);
+            sleep(2000);
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
-                execCmd("adb shell input tap " + nineCoordinates + "l");
-                Thread.sleep(2000);
+                execCmd("adb shell input tap " + nineCoordinates + "");
+                sleep(2000);
                 pressKey(KEY.BACK);
-                Thread.sleep(2000);
+                sleep(2000);
             }
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -56,7 +56,7 @@ public class CpuHomeToNineTest extends Action {
     @Test
     public void cpuMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Cpu().writeExcel("首页进入九块九Cpu");
@@ -65,7 +65,7 @@ public class CpuHomeToNineTest extends Action {
     @Test
     public void memoryMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Memory().writeExcel("首页进入九块九Memory");

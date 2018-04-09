@@ -1,7 +1,6 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
-import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -25,14 +24,14 @@ public class CpuSwipSuperLimitTest extends Action {
     public void swipSuperLimit() throws InterruptedException, IOException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
-            Thread.sleep(3000);
+            sleep(3000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             driver.findElementByAndroidUIAutomator("text(\"限量秒杀\")").click();
-            Thread.sleep(5000);
+            sleep(5000);
             start = true;
             swipUpAndDownByTime(testTime);
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -46,7 +45,7 @@ public class CpuSwipSuperLimitTest extends Action {
     @Test
     public void cpuMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Cpu().writeExcel("超级返限量秒杀滑动Cpu");
@@ -55,7 +54,7 @@ public class CpuSwipSuperLimitTest extends Action {
     @Test
     public void memoryMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Memory().writeExcel("超级返限量秒杀滑动Memory");

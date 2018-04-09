@@ -28,21 +28,21 @@ public class CpuSwitchHomeTabBarTest extends Action {
         try {
             List<AndroidElement> tabBars = getElementsByResourceId("com.fanli.android.apps:id/iv_icon");
             tabBars.get(1).click();
-            Thread.sleep(2000);
+            sleep(2000);
             login();
             tabBars.get(0).click();
-            Thread.sleep(2000);
+            sleep(2000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             start = true;
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 for (int i = 0; i < tabBars.size(); i++) {
                     tabBars.get(i).click();
-                    Thread.sleep(2000);
+                    sleep(2000);
                 }
             }
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -56,7 +56,7 @@ public class CpuSwitchHomeTabBarTest extends Action {
     @Test
     public void cpuMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Cpu().writeExcel("首页切换底部barCpu");
@@ -65,7 +65,7 @@ public class CpuSwitchHomeTabBarTest extends Action {
     @Test
     public void memoryMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Memory().writeExcel("首页切换底部barMemory");

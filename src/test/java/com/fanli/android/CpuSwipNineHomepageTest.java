@@ -4,7 +4,6 @@ import com.fanli.android.action.Action;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
-import io.appium.java_client.android.AndroidElement;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -25,12 +24,12 @@ public class CpuSwipNineHomepageTest extends Action {
     public void swipNineHomepage() throws InterruptedException, IOException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
-            Thread.sleep(3000);
+            sleep(3000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             start = true;
             swipUpAndDownByTime(testTime);
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -44,7 +43,7 @@ public class CpuSwipNineHomepageTest extends Action {
     @Test
     public void cpuMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Cpu().writeExcel("九块九首页滑动Cpu");
@@ -53,7 +52,7 @@ public class CpuSwipNineHomepageTest extends Action {
     @Test
     public void memoryMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Memory().writeExcel("九块九首页滑动Memory");

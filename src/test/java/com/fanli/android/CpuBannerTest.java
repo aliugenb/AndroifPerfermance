@@ -32,9 +32,9 @@ public class CpuBannerTest extends Action {
             while ((new Date()).getTime() - s < formatMin(testTime)) {
                 TouchAction action = new TouchAction(driver).press(width * 4 / 5, height * 1 / 5).waitAction().moveTo(width * 1 / 6, height * 1 / 5).release();
                 action.perform();
-                Thread.sleep(2000);
+                sleep(2000);
             }
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;

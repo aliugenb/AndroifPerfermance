@@ -22,11 +22,11 @@ public class FpsSuperLimitTest extends Action {
     public void superLimit() throws Exception {
         try {
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
-            Thread.sleep(3000);
+            sleep(3000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             driver.findElementByAndroidUIAutomator("text(\"限量秒杀\")").click();
-            Thread.sleep(3000);
+            sleep(3000);
             start = true;
             swipUpAndDownByTime(testTime);
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class FpsSuperLimitTest extends Action {
     @Test
     public void fpsMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Fps().writeExcel("超级返限量秒杀FPS");

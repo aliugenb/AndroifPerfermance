@@ -1,7 +1,6 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
-import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -27,9 +26,9 @@ public class CpuSwitchSuperCatsTest extends Action {
     public void switchSuperCats() throws InterruptedException, IOException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
-            Thread.sleep(3000);
+            sleep(3000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             AndroidElement androidElement = driver.findElementById("com.fanli.android.apps:id/iv_arrow");
             int y = androidElement.getCenter().getY();
             int maxX = androidElement.getLocation().getX();
@@ -37,9 +36,9 @@ public class CpuSwitchSuperCatsTest extends Action {
             start = true;
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 execCmd("adb shell input tap " + (int) Math.round(Math.random() * (maxX - 10) + 10) + " " + y + "");
-                Thread.sleep(2000);
+                sleep(2000);
             }
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -53,7 +52,7 @@ public class CpuSwitchSuperCatsTest extends Action {
     @Test
     public void cpuMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Cpu().writeExcel("超级返切换分类Cpu");
@@ -62,7 +61,7 @@ public class CpuSwitchSuperCatsTest extends Action {
     @Test
     public void memoryMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Memory().writeExcel("超级返切换分类Memory");

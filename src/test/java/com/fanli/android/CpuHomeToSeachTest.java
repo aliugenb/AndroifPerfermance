@@ -27,42 +27,42 @@ public class CpuHomeToSeachTest extends Action {
             AndroidElement searchElement = driver.findElementById("com.fanli.android.apps:id/search_bg");
             String searchCoordinates = getCenterCoordinates(searchElement);
             searchElement.click();
-            Thread.sleep(2000);
+            sleep(2000);
             String keyWord = "aaa";
             driver.findElementByClassName("android.widget.EditText").sendKeys(keyWord);
-            Thread.sleep(2000);
+            sleep(2000);
             driver.findElementByAndroidUIAutomator("text(\"搜索\")").click();
             start = true;
-            Thread.sleep(3000);
+            sleep(3000);
             pressKey(KEY.BACK);
-            Thread.sleep(1000);
+            sleep(1000);
             pressKey(KEY.BACK);
-            Thread.sleep(1000);
+            sleep(1000);
 
             //获取历史关键词的坐标
             execCmd("adb shell input tap " + searchCoordinates + "");
-            Thread.sleep(2000);
+            sleep(2000);
             AndroidElement keyWordElement = driver.findElementByAndroidUIAutomator("text(\"" + keyWord + "\")");
             String keyWordCoordinates = getCenterCoordinates(keyWordElement);
             keyWordElement.click();
-            Thread.sleep(3000);
+            sleep(3000);
             pressKey(KEY.BACK);
-            Thread.sleep(1000);
+            sleep(1000);
             pressKey(KEY.BACK);
-            Thread.sleep(1000);
+            sleep(1000);
 
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 execCmd("adb shell input tap " + searchCoordinates + "");
-                Thread.sleep(2000);
+                sleep(2000);
                 execCmd("adb shell input tap " + keyWordCoordinates + "");
-                Thread.sleep(4000);
+                sleep(4000);
                 pressKey(KEY.BACK);
-                Thread.sleep(1000);
+                sleep(1000);
                 pressKey(KEY.BACK);
-                Thread.sleep(1000);
+                sleep(1000);
             }
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -76,7 +76,7 @@ public class CpuHomeToSeachTest extends Action {
     @Test
     public void cpuMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Cpu().writeExcel("首页进入主搜Cpu");
@@ -85,7 +85,7 @@ public class CpuHomeToSeachTest extends Action {
     @Test
     public void memoryMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Memory().writeExcel("首页进入主搜Memory");

@@ -25,9 +25,9 @@ public class CpuSwitchNineCatsTest extends Action {
     public void switchNineCats() throws InterruptedException, IOException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
-            Thread.sleep(3000);
+            sleep(3000);
             closeInterstitial();
-            Thread.sleep(2000);
+            sleep(2000);
             AndroidElement androidElement = driver.findElementById("com.fanli.android.apps:id/arrow_area");
             int y = androidElement.getCenter().getY();
             int maxX = androidElement.getLocation().getX();
@@ -35,9 +35,9 @@ public class CpuSwitchNineCatsTest extends Action {
             start = true;
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 execCmd("adb shell input tap " + (int) Math.round(Math.random() * (maxX - 10) + 10) + " " + y + "");
-                Thread.sleep(2000);
+                sleep(2000);
             }
-            Thread.sleep(formatMin(2));
+            sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -51,7 +51,7 @@ public class CpuSwitchNineCatsTest extends Action {
     @Test
     public void cpuMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Cpu().writeExcel("九块九切换分类Cpu");
@@ -60,7 +60,7 @@ public class CpuSwitchNineCatsTest extends Action {
     @Test
     public void memoryMonitor() throws IOException, InterruptedException {
         while (!start) {
-            Thread.sleep(500);
+            sleep(500);
             System.out.println("waiting");
         }
         new Memory().writeExcel("九块九切换分类Memory");
