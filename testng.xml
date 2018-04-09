@@ -95,6 +95,18 @@
                     <include name="swipSuperLimit"/>
                     <include name="cpuMonitor"/>
                     <include name="memoryMonitor"/>
+                    <include name="cpuMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="3" preserve-order="true" parallel="methods" thread-count="3" name="9k9FPS">
+        <classes>
+            <class name="com.fanli.android.goNineTest" >
+                <methods>
+                    <include name="goNineTest"/>
+                    <include name="fpsMonitor"/>
+                    <include name="memoryMonitor"/>
                 </methods>
             </class>
         </classes>
