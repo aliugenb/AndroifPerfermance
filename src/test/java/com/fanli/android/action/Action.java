@@ -107,12 +107,12 @@ public class Action {
         driver.findElementById("com.fanli.android.apps:id/btn_login").click();
         Thread.sleep(3000);
         try {
-            if(driver.findElementById("com.fanli.android.apps:id/btn_login").isDisplayed()){
+            if (driver.findElementById("com.fanli.android.apps:id/btn_login").isDisplayed()) {
                 throw new MyException("登录失败");
             }
         } catch (NoSuchElementException e) {
             System.out.println("登录成功");
-        }catch (MyException e) {
+        } catch (MyException e) {
             System.err.println(e);
             throw e;
         }
@@ -142,31 +142,29 @@ public class Action {
         }
     }
 
+    //获取中心点击坐标
+    public static String getCenterCoordinates(AndroidElement androidElement) {
+        String coordinates = null;
+        int x = androidElement.getCenter().getX();
+        int y = androidElement.getCenter().getY();
+        coordinates = "" + x + " " + y + "";
+        return coordinates;
+    }
+
     public static void pressKey(KEY keyCode) throws IOException {
-        if (keyCode.equals(KEY.SEARCH)) {
-            //首页点击主搜位置坐标
-            execCmd("adb shell input tap 490 140");
-        } else if (keyCode.equals(KEY.SUPER)) {
-            //首页点击超级返位置坐标
-            execCmd("adb shell input tap 126 558");
-        } else if (keyCode.equals(KEY.NINE)) {
-            //首页点击9k9位置坐标
-            execCmd("adb shell input tap 531 596");
-        } else if (keyCode.equals(KEY.BACK)) {
+        if (keyCode.equals(KEY.BACK)) {
             //点击返回键
             execCmd("adb shell input keyevent 4");
         } else if (keyCode.equals(KEY.ENTER)) {
             //点击HOME键
             execCmd("adb shell input keyevent 66");
-        }else if (keyCode.equals(KEY.HOME)) {
+        } else if (keyCode.equals(KEY.HOME)) {
             //点击HOME键
             execCmd("adb shell input keyevent 3");
+        } else {
+            execCmd("adb shell input tap " + keyCode + "");
         }
     }
-
-//    public static void excuteInput() throws IOException {
-//        soutexecCmd("adb shell ime list -s");
-//    }
 
     public static void skipStartScreen() {
         try {
@@ -218,14 +216,14 @@ public class Action {
                 inputMethods.add(line.toString().trim());
             }
 
-            if (inputMethods.size()==1 && inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")==0){
+            if (inputMethods.size() == 1 && inputMethods.indexOf("io.appium.android.ime/.UnicodeIME") == 0) {
                 throw new MyException("请安装其他三方输入法");
-            }else {
-                if(inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")>0){
+            } else {
+                if (inputMethods.indexOf("io.appium.android.ime/.UnicodeIME") > 0) {
                     inputMethod = inputMethods.get(0);
-                }else if(inputMethods.indexOf("io.appium.android.ime/.UnicodeIME")==0){
+                } else if (inputMethods.indexOf("io.appium.android.ime/.UnicodeIME") == 0) {
                     inputMethod = inputMethods.get(1);
-                }else {
+                } else {
                     throw new MyException("没有安装appium输入法");
                 }
             }

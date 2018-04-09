@@ -17,12 +17,12 @@ import java.io.IOException;
  * 超级返限量秒杀滑动检查cpu和memory
  */
 
-public class CpuSwipSuperLimitTest extends Action{
+public class CpuSwipSuperLimitTest extends Action {
 
     private boolean start = false;
 
     @Test
-    public void swipSuperLimit() throws InterruptedException, IOException, MyException {
+    public void swipSuperLimit() throws InterruptedException, IOException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
             Thread.sleep(3000);

@@ -2,6 +2,7 @@ package com.fanli.android;
 
 import com.fanli.android.action.Action;
 import com.fanli.android.action.KEY;
+import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -14,55 +15,56 @@ import java.util.Date;
 /**
  * Created with IntelliJ IDEA.
  * Author: ye.liu
- * Date: 2018/4/4
- * Time: 14:38
- * 首页反复进入主搜检查cpu和memory
+ * Date: 2018/4/9
+ * Time: 14:52
+ * 超级返首页反复进入搜索检查cpu和memory
  */
-public class CpuHomeToSeachTest extends Action {
+
+public class CpuSuperToSearchTest extends Action {
+
     private boolean start = false;
 
     @Test
-    public void enterSeach() throws InterruptedException, IOException {
+    public void superToSearch() throws InterruptedException, IOException, MyException {
         try {
-            AndroidElement searchElement = driver.findElementById("com.fanli.android.apps:id/search_bg");
+            driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
+            Thread.sleep(3000);
+            closeInterstitial();
+            Thread.sleep(2000);
+            AndroidElement searchElement = driver.findElementById("com.fanli.android.apps:id/search_content");
             String searchCoordinates = getCenterCoordinates(searchElement);
             searchElement.click();
             Thread.sleep(2000);
             String keyWord = "aaa";
-            driver.findElementByClassName("android.widget.EditText").sendKeys(keyWord);
-            Thread.sleep(2000);
-            driver.findElementByAndroidUIAutomator("text(\"搜索\")").click();
-            start = true;
+            driver.findElementById("com.fanli.android.apps:id/et_search").sendKeys(keyWord);
             Thread.sleep(3000);
-            pressKey(KEY.BACK);
-            Thread.sleep(1000);
+            //恢复输入法，点击enter
+            execCmd("adb shell ime set " + inputMethod() + "");
+            pressKey(KEY.ENTER);
+            Thread.sleep(4000);
+            start = true;
             pressKey(KEY.BACK);
             Thread.sleep(1000);
 
-            //获取历史关键词的坐标
             execCmd("adb shell input tap " + searchCoordinates + "");
             Thread.sleep(2000);
             AndroidElement keyWordElement = driver.findElementByAndroidUIAutomator("text(\"" + keyWord + "\")");
             String keyWordCoordinates = getCenterCoordinates(keyWordElement);
             keyWordElement.click();
-            Thread.sleep(3000);
-            pressKey(KEY.BACK);
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             pressKey(KEY.BACK);
             Thread.sleep(1000);
 
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(10)) {
+            while (((new Date()).getTime() - s) < formatMin(2)) {
                 execCmd("adb shell input tap " + searchCoordinates + "");
                 Thread.sleep(2000);
                 execCmd("adb shell input tap " + keyWordCoordinates + "");
                 Thread.sleep(4000);
                 pressKey(KEY.BACK);
                 Thread.sleep(1000);
-                pressKey(KEY.BACK);
-                Thread.sleep(1000);
             }
-            Thread.sleep(formatMin(2));
+            Thread.sleep(formatMin(1));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
@@ -79,7 +81,7 @@ public class CpuHomeToSeachTest extends Action {
             Thread.sleep(500);
             System.out.println("waiting");
         }
-        new Cpu().writeExcel("首页进入主搜Cpu");
+        new Cpu().writeExcel("超级返首页反复进入搜索Cpu");
     }
 
     @Test
@@ -88,6 +90,6 @@ public class CpuHomeToSeachTest extends Action {
             Thread.sleep(500);
             System.out.println("waiting");
         }
-        new Memory().writeExcel("首页进入主搜Memory");
+        new Memory().writeExcel("超级返首页反复进入搜索Memory");
     }
 }

@@ -20,7 +20,7 @@ import java.util.List;
  * 首页切换底部bar检查cpu和memory
  */
 
-public class CpuSwitchHomeTabBarTest extends Action{
+public class CpuSwitchHomeTabBarTest extends Action {
     private boolean start = false;
 
     @Test
@@ -30,10 +30,14 @@ public class CpuSwitchHomeTabBarTest extends Action{
             tabBars.get(1).click();
             Thread.sleep(2000);
             login();
+            tabBars.get(0).click();
+            Thread.sleep(2000);
+            closeInterstitial();
+            Thread.sleep(2000);
             start = true;
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(10)) {
-                for(int i=0;i<tabBars.size();i++){
+                for (int i = 0; i < tabBars.size(); i++) {
                     tabBars.get(i).click();
                     Thread.sleep(2000);
                 }

@@ -25,18 +25,18 @@ public class GetDeviceInfo {
         return DeviceName;
     }
 
-    public  GetDeviceInfo() {
+    public GetDeviceInfo() {
         String version = GetInfo("adb shell getprop ro.build.version.release");
         String deviceName = GetInfo("adb devices");
         Pattern r = Pattern.compile("attached(.*)device");
         Matcher m = r.matcher(deviceName);
         this.OsVersion = version.trim();
-        if (m.find()){
+        if (m.find()) {
             this.DeviceName = m.group(1).trim();
         }
     }
 
-    public static String GetInfo(String cmd){
+    public static String GetInfo(String cmd) {
         Runtime run = Runtime.getRuntime();
         String info = null;
         try {
@@ -45,8 +45,8 @@ public class GetDeviceInfo {
                     process.getInputStream()));
             StringBuffer stringBuffer = new StringBuffer();
             String line = null;
-            while ((line = in.readLine()) != null){
-                stringBuffer.append(line+" ");
+            while ((line = in.readLine()) != null) {
+                stringBuffer.append(line + " ");
             }
             info = stringBuffer.toString();
             in.close();

@@ -22,7 +22,7 @@ public class CpuSwipSuperBrandTest extends Action {
     private boolean start = false;
 
     @Test
-    public void swipSuperBrand() throws InterruptedException, IOException, MyException {
+    public void swipSuperBrand() throws InterruptedException, IOException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
             Thread.sleep(3000);

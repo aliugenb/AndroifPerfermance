@@ -5,6 +5,7 @@ import com.fanli.android.action.KEY;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
+import io.appium.java_client.android.AndroidElement;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -25,7 +26,9 @@ public class CpuHomeToNineTest extends Action {
     @Test
     public void enterNine() throws InterruptedException, IOException {
         try {
-            driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
+            AndroidElement nineElement = driver.findElementByAndroidUIAutomator("text(\"9块9\")");
+            String nineCoordinates = getCenterCoordinates(nineElement);
+            nineElement.click();
             start = true;
             Thread.sleep(3000);
             closeInterstitial();
@@ -34,7 +37,7 @@ public class CpuHomeToNineTest extends Action {
             Thread.sleep(2000);
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(10)) {
-                pressKey(KEY.NINE);
+                execCmd("adb shell input tap " + nineCoordinates + "l");
                 Thread.sleep(2000);
                 pressKey(KEY.BACK);
                 Thread.sleep(2000);

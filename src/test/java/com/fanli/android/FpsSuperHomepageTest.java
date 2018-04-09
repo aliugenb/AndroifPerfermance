@@ -30,7 +30,7 @@ public class FpsSuperHomepageTest extends Action {
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;
-        }finally {
+        } finally {
             start = true;
             DataSwitch.fpsEnd = true;
         }
