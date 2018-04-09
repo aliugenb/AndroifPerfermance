@@ -26,7 +26,7 @@ public class FpsNineHomepageTest extends Action {
             closeInterstitial();
             Thread.sleep(2000);
             start = true;
-            swipUpAndDownByTime(10);
+            swipUpAndDownByTime(testTime);
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;

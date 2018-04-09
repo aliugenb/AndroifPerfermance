@@ -31,7 +31,7 @@ public class CpuSwipSuperBrandTest extends Action {
             driver.findElementByAndroidUIAutomator("text(\"品牌特卖\")").click();
             Thread.sleep(2000);
             start = true;
-            swipUpAndDownByTime(10);
+            swipUpAndDownByTime(testTime);
             Thread.sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

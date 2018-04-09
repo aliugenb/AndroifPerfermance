@@ -36,7 +36,7 @@ public class CpuHomeToSuperTest extends Action {
             pressKey(KEY.BACK);
             Thread.sleep(2000);
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(10)) {
+            while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 execCmd("adb shell input tap "+superCoordinates+"");
                 Thread.sleep(2000);
                 pressKey(KEY.BACK);

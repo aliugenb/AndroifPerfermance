@@ -37,7 +37,7 @@ public class CpuSwipSuperSearchTest extends Action {
             pressKey(KEY.ENTER);
             Thread.sleep(5000);
             start = true;
-            swipUpAndDownByTime(10);
+            swipUpAndDownByTime(testTime);
             Thread.sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

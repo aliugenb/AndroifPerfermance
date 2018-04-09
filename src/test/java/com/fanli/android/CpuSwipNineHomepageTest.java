@@ -29,7 +29,7 @@ public class CpuSwipNineHomepageTest extends Action {
             closeInterstitial();
             Thread.sleep(2000);
             start = true;
-            swipUpAndDownByTime(1);
+            swipUpAndDownByTime(testTime);
             Thread.sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

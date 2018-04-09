@@ -31,7 +31,7 @@ public class CpuSwipSuperLimitTest extends Action {
             driver.findElementByAndroidUIAutomator("text(\"限量秒杀\")").click();
             Thread.sleep(5000);
             start = true;
-            swipUpAndDownByTime(10);
+            swipUpAndDownByTime(testTime);
             Thread.sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

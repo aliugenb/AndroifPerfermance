@@ -52,7 +52,7 @@ public class CpuHomeToSeachTest extends Action {
             Thread.sleep(1000);
 
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(10)) {
+            while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 execCmd("adb shell input tap " + searchCoordinates + "");
                 Thread.sleep(2000);
                 execCmd("adb shell input tap " + keyWordCoordinates + "");

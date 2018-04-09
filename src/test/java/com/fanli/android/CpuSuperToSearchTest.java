@@ -56,7 +56,7 @@ public class CpuSuperToSearchTest extends Action {
             Thread.sleep(1000);
 
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(2)) {
+            while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 execCmd("adb shell input tap " + searchCoordinates + "");
                 Thread.sleep(2000);
                 execCmd("adb shell input tap " + keyWordCoordinates + "");
@@ -64,7 +64,7 @@ public class CpuSuperToSearchTest extends Action {
                 pressKey(KEY.BACK);
                 Thread.sleep(1000);
             }
-            Thread.sleep(formatMin(1));
+            Thread.sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
             throw e;

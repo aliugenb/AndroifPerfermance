@@ -36,7 +36,7 @@ public class CpuSwitchHomeTabBarTest extends Action {
             Thread.sleep(2000);
             start = true;
             long s = (new Date()).getTime();
-            while (((new Date()).getTime() - s) < formatMin(10)) {
+            while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 for (int i = 0; i < tabBars.size(); i++) {
                     tabBars.get(i).click();
                     Thread.sleep(2000);

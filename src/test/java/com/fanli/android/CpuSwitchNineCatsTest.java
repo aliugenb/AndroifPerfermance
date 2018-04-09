@@ -33,7 +33,7 @@ public class CpuSwitchNineCatsTest extends Action {
             int maxX = androidElement.getLocation().getX();
             long s = (new Date()).getTime();
             start = true;
-            while (((new Date()).getTime() - s) < formatMin(10)) {
+            while (((new Date()).getTime() - s) < formatMin(testTime)) {
                 execCmd("adb shell input tap " + (int) Math.round(Math.random() * (maxX - 10) + 10) + " " + y + "");
                 Thread.sleep(2000);
             }

@@ -44,17 +44,17 @@
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返首页反复进入搜索检查cpu和memory">
-        <classes>
-            <class name="com.fanli.android.CpuSuperToSearchTest">
-                <methods>
-                    <include name="superToSearch"/>
-                    <include name="cpuMonitor"/>
-                    <include name="memoryMonitor"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返首页反复进入搜索检查cpu和memory">-->
+        <!--<classes>-->
+            <!--<class name="com.fanli.android.CpuSuperToSearchTest">-->
+                <!--<methods>-->
+                    <!--<include name="superToSearch"/>-->
+                    <!--<include name="cpuMonitor"/>-->
+                    <!--<include name="memoryMonitor"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
     <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="9k9首页滑动检查cpu和memory">-->
         <!--<classes>-->
             <!--<class name="com.fanli.android.CpuSwipNineHomepageTest">-->
