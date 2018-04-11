@@ -2,9 +2,7 @@ package com.fanli.android.handleData;
 
 import com.fanli.android.action.MyException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -48,12 +46,12 @@ public class Cpu extends GetData {
     @Override
     public String handleCmd(String result) {
         System.out.println(result);
-        String reg = "\\s+[0-9]+%\\s+";
+        String reg = "\\s+([0-9]+)\\%\\s+";
         String top = null;
         Pattern p = Pattern.compile(reg);
         Matcher m = p.matcher(result);
         if (m.find()) {
-            top = m.group().trim();
+            top = m.group(1).trim();
         }
         System.out.println(top);
         return top;

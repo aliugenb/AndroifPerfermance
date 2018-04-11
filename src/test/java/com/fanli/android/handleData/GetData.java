@@ -100,7 +100,8 @@ public abstract class GetData implements WriteExcel {
 
             for (rowNum = 0; rowNum < size; rowNum++) {
                 row = sheet.createRow((short) rowNum + 1);
-                row.createCell(0).setCellValue(dataMaps.get(rowNum));
+                int cellData = Integer.parseInt(dataMaps.get(rowNum));
+                row.createCell(0).setCellValue(cellData);
             }
 
             // 新建一输出文件流

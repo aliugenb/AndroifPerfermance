@@ -25,14 +25,16 @@ public class CpuBannerTest extends Action {
     @Test
     public void swipBanner() throws InterruptedException, IOException {
         try {
-            start = true;
-            int width = driver.manage().window().getSize().width;
-            int height = driver.manage().window().getSize().height;
-            long s = (new Date()).getTime();
-            while ((new Date()).getTime() - s < formatMin(testTime)) {
-                TouchAction action = new TouchAction(driver).press(width * 4 / 5, height * 1 / 5).waitAction().moveTo(width * 1 / 6, height * 1 / 5).release();
-                action.perform();
-                sleep(2000);
+            if (driver.findElementById("com.fanli.android.apps:id/search_bg").isDisplayed()) {
+                start = true;
+                int width = driver.manage().window().getSize().width;
+                int height = driver.manage().window().getSize().height;
+                long s = (new Date()).getTime();
+                while ((new Date()).getTime() - s < formatMin(testTime)) {
+                    TouchAction action = new TouchAction(driver).press(width * 4 / 5, height * 1 / 5).waitAction().moveTo(width * 1 / 6, height * 1 / 5).release();
+                    action.perform();
+                    sleep(2000);
+                }
             }
             sleep(formatMin(2));
         } catch (Exception e) {

@@ -42,7 +42,7 @@ public class Fps extends GetData {
                         if (fps != null && fps.indexOf("Total frames rendered") != -1) {
                             String total = fps.substring(fps.indexOf("rendered:") + 10, fps.indexOf("Janky") - 1);
                             String janky = fps.substring(fps.indexOf("Janky frames:") + 14, fps.indexOf("(") - 1);
-                            String percent = fps.substring(fps.indexOf("(") + 1, fps.indexOf(")"));
+                            String percent = fps.substring(fps.indexOf("(") + 1, fps.indexOf("%)"));
 
                             String result = total + "," + janky + "," + percent + ",";
                             data.add(result);
@@ -89,7 +89,7 @@ public class Fps extends GetData {
             HSSFRow row = sheet.createRow(0);
 //             单元格
             HSSFCell cell = null;
-            String[] title = {"Total frames rendered", "Janky frames", "percent"};
+            String[] title = {"Total frames rendered", "Janky frames", "percent(%)"};
             for (int i = 0; i < title.length; i++) {
                 cell = row.createCell(i);
                 cell.setCellValue(title[i]);
@@ -100,11 +100,11 @@ public class Fps extends GetData {
                 String cellData = dataMaps.get(rowNum);
                 String[] cellDatas = cellData.split(",");
                 cell = row.createCell(0);
-                cell.setCellValue(cellDatas[0]);
+                cell.setCellValue(Integer.parseInt(cellDatas[0]));
                 cell = row.createCell(1);
-                cell.setCellValue(cellDatas[1]);
+                cell.setCellValue(Integer.parseInt(cellDatas[1]));
                 cell = row.createCell(2);
-                cell.setCellValue(cellDatas[2]);
+                cell.setCellValue(Double.valueOf(cellDatas[2]));
             }
 
 //             新建一输出文件流
