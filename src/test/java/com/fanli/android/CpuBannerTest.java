@@ -32,17 +32,14 @@ public class CpuBannerTest extends Action {
                 int height = driver.manage().window().getSize().height;
                 long s = (new Date()).getTime();
                 while ((new Date()).getTime() - s < formatMin(testTime)) {
+                    checkInFanli();
                     TouchAction action = new TouchAction(driver).press(width * 4 / 5, height * 1 / 5).waitAction().moveTo(width * 1 / 6, height * 1 / 5).release();
                     action.perform();
                     sleep(2000);
-//                    if(!checkCurrentActivity("com.fanli.android.apps")){
-//                        throw new MyException("当前不在返利app");
-//                    }
                 }
             }
             sleep(formatMin(2));
         } catch (Exception e) {
-            System.out.println("++++++++++++++++++++++");
             DataSwitch.excelNormal = false;
             throw e;
         } finally {

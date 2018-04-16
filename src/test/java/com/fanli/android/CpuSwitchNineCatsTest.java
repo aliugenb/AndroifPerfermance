@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -22,7 +23,7 @@ public class CpuSwitchNineCatsTest extends Action {
     private boolean start = false;
 
     @Test
-    public void switchNineCats() throws InterruptedException, IOException {
+    public void switchNineCats() throws InterruptedException, IOException, MyException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
             sleep(3000);
@@ -34,6 +35,7 @@ public class CpuSwitchNineCatsTest extends Action {
             long s = (new Date()).getTime();
             start = true;
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
+                checkInFanli();
                 execCmd("adb shell input tap " + (int) Math.round(Math.random() * (maxX - 10) + 10) + " " + y + "");
                 sleep(2000);
             }

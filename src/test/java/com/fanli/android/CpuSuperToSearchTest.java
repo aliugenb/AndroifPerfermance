@@ -57,6 +57,7 @@ public class CpuSuperToSearchTest extends Action {
 
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
+                checkInFanli();
                 execCmd("adb shell input tap " + searchCoordinates + "");
                 sleep(2000);
                 execCmd("adb shell input tap " + keyWordCoordinates + "");

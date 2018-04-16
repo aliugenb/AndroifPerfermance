@@ -130,11 +130,12 @@ public class Action {
     }
 
     //根据设定时长滑动页面
-    public static void swipUpAndDownByTime(int time) throws InterruptedException {
+    public static void swipUpAndDownByTime(int time) throws InterruptedException, IOException, MyException {
         int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
         long s = (new Date()).getTime();
         while ((new Date()).getTime() - s < formatMin(time)) {
+            checkInFanli();
             for (int i1 = 0; i1 <= 8; i1++) {
                 TouchAction action = new TouchAction(driver).press(width / 2, height * 5 / 7).waitAction().moveTo(width / 2, height * 2 / 7).release();
                 action.perform();
@@ -242,8 +243,9 @@ public class Action {
         }
         return inputMethod;
     }
-    // 检查当前页面最上层的activity
-    public static boolean checkCurrentActivity(String activityName) throws IOException, MyException {
+
+    // 检查当前页面最上层的activity是否是返利
+    public static void checkInFanli() throws IOException, MyException {
         String command = "adb shell \"dumpsys activity | grep \"mFocusedActivity\"\"";
         if (System.getProperty("os.name").equals("Mac OS X")) {
             command = "adb shell dumpsys activity | grep \"mFocusedActivity\"";
@@ -263,8 +265,8 @@ public class Action {
             }
             String str = stringBuffer.toString().trim();
             System.out.println(str);
-            if(str.indexOf("com.fanli.android.apps")!=-1){
-                return false;
+            if (str.indexOf("com.fanli.android.apps") != -1) {
+                throw new MyException("当前不在返利app");
             }
         } catch (InterruptedException e) {
             System.err.println(e);
@@ -276,7 +278,6 @@ public class Action {
                 throw e1;
             }
         }
-        return false;
     }
 
 

@@ -2,6 +2,7 @@ package com.fanli.android;
 
 import com.fanli.android.action.Action;
 import com.fanli.android.action.KEY;
+import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -24,7 +25,7 @@ public class CpuHomeToSuperTest extends Action {
     private boolean start = false;
 
     @Test
-    public void enterSuper() throws InterruptedException, IOException {
+    public void enterSuper() throws InterruptedException, IOException, MyException {
         try {
             AndroidElement superElement = driver.findElementByAndroidUIAutomator("text(\"超级返\")");
             String superCoordinates = getCenterCoordinates(superElement);
@@ -37,7 +38,8 @@ public class CpuHomeToSuperTest extends Action {
             sleep(2000);
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
-                execCmd("adb shell input tap "+superCoordinates+"");
+                checkInFanli();
+                execCmd("adb shell input tap " + superCoordinates + "");
                 sleep(2000);
                 pressKey(KEY.BACK);
                 sleep(1000);

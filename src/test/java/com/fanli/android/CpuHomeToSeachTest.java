@@ -2,6 +2,7 @@ package com.fanli.android;
 
 import com.fanli.android.action.Action;
 import com.fanli.android.action.KEY;
+import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -22,7 +23,7 @@ public class CpuHomeToSeachTest extends Action {
     private boolean start = false;
 
     @Test
-    public void enterSeach() throws InterruptedException, IOException {
+    public void enterSeach() throws InterruptedException, IOException, MyException {
         try {
             AndroidElement searchElement = driver.findElementById("com.fanli.android.apps:id/search_bg");
             String searchCoordinates = getCenterCoordinates(searchElement);
@@ -53,6 +54,7 @@ public class CpuHomeToSeachTest extends Action {
 
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
+                checkInFanli();
                 execCmd("adb shell input tap " + searchCoordinates + "");
                 sleep(2000);
                 execCmd("adb shell input tap " + keyWordCoordinates + "");
