@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -23,7 +24,7 @@ public class CpuBannerTest extends Action {
     private boolean start = false;
 
     @Test
-    public void swipBanner() throws InterruptedException, IOException {
+    public void swipBanner() throws InterruptedException, IOException, MyException {
         try {
             if (driver.findElementById("com.fanli.android.apps:id/search_bg").isDisplayed()) {
                 start = true;
@@ -34,10 +35,14 @@ public class CpuBannerTest extends Action {
                     TouchAction action = new TouchAction(driver).press(width * 4 / 5, height * 1 / 5).waitAction().moveTo(width * 1 / 6, height * 1 / 5).release();
                     action.perform();
                     sleep(2000);
+//                    if(!checkCurrentActivity("com.fanli.android.apps")){
+//                        throw new MyException("当前不在返利app");
+//                    }
                 }
             }
             sleep(formatMin(2));
         } catch (Exception e) {
+            System.out.println("++++++++++++++++++++++");
             DataSwitch.excelNormal = false;
             throw e;
         } finally {

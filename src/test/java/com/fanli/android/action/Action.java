@@ -242,6 +242,43 @@ public class Action {
         }
         return inputMethod;
     }
+    // 检查当前页面最上层的activity
+    public static boolean checkCurrentActivity(String activityName) throws IOException, MyException {
+        String command = "adb shell \"dumpsys activity | grep \"mFocusedActivity\"\"";
+        if (System.getProperty("os.name").equals("Mac OS X")) {
+            command = "adb shell dumpsys activity | grep \"mFocusedActivity\"";
+        }
+        Runtime runtime = Runtime.getRuntime();
+        Process proc = runtime.exec(command);
+        try {
+            if (proc.waitFor() != 0) {
+                System.err.println("exit value = " + proc.exitValue());
+            }
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    proc.getInputStream()));
+            StringBuffer stringBuffer = new StringBuffer();
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                stringBuffer.append(line + " ");
+            }
+            String str = stringBuffer.toString().trim();
+            System.out.println(str);
+            if(str.indexOf("com.fanli.android.apps")!=-1){
+                return false;
+            }
+        } catch (InterruptedException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                proc.destroy();
+            } catch (Exception e1) {
+                System.err.print(e1);
+                throw e1;
+            }
+        }
+        return false;
+    }
+
 
     //分钟转换成毫秒
     public static int formatMin(int i) {
