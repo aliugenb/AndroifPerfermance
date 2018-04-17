@@ -264,8 +264,7 @@ public class Action {
                 stringBuffer.append(line + " ");
             }
             String str = stringBuffer.toString().trim();
-            System.out.println(str);
-            if (str.indexOf("com.fanli.android.apps") != -1) {
+            if (str.indexOf("com.fanli.android.apps") == -1) {
                 throw new MyException("当前不在返利app");
             }
         } catch (InterruptedException e) {
