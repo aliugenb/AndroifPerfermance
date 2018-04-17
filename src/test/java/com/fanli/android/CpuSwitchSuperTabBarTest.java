@@ -40,6 +40,7 @@ public class CpuSwitchSuperTabBarTest extends Action {
             start = true;
             long s = (new Date()).getTime();
             while (((new Date()).getTime() - s) < formatMin(testTime)) {
+                checkInFanli();
                 for (int i = 0; i < tabBars.size(); i++) {
                     tabBars.get(i).click();
                     sleep(1000);

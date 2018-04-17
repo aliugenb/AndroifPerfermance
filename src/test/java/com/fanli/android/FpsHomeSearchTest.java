@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Fps;
 import org.testng.annotations.Test;
@@ -19,7 +20,7 @@ public class FpsHomeSearchTest extends Action {
     private boolean start = false;
 
     @Test
-    public void homeSearch() throws InterruptedException {
+    public void homeSearch() throws InterruptedException, IOException, MyException {
         try {
             driver.findElementById("com.fanli.android.apps:id/search_bg").click();
             sleep(2000);

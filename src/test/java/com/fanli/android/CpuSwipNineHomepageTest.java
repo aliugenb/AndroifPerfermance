@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -21,7 +22,7 @@ public class CpuSwipNineHomepageTest extends Action {
     private boolean start = false;
 
     @Test
-    public void swipNineHomepage() throws InterruptedException, IOException {
+    public void swipNineHomepage() throws InterruptedException, IOException, MyException {
         try {
             driver.findElementByAndroidUIAutomator("text(\"9块9\")").click();
             sleep(3000);

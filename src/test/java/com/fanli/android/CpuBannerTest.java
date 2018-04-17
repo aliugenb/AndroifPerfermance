@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
 import com.fanli.android.handleData.Memory;
@@ -23,7 +24,7 @@ public class CpuBannerTest extends Action {
     private boolean start = false;
 
     @Test
-    public void swipBanner() throws InterruptedException, IOException {
+    public void swipBanner() throws InterruptedException, IOException, MyException {
         try {
             if (driver.findElementById("com.fanli.android.apps:id/search_bg").isDisplayed()) {
                 start = true;
@@ -31,6 +32,7 @@ public class CpuBannerTest extends Action {
                 int height = driver.manage().window().getSize().height;
                 long s = (new Date()).getTime();
                 while ((new Date()).getTime() - s < formatMin(testTime)) {
+                    checkInFanli();
                     TouchAction action = new TouchAction(driver).press(width * 4 / 5, height * 1 / 5).waitAction().moveTo(width * 1 / 6, height * 1 / 5).release();
                     action.perform();
                     sleep(2000);

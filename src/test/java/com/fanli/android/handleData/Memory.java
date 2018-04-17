@@ -38,15 +38,16 @@ public class Memory extends GetData {
         while (true) {
             try {
                 if (DataSwitch.excelNormal) {
-                    while (!DataSwitch.memoryEnd) {
+                    if (!DataSwitch.memoryEnd) {
                         System.out.println("Memory收集数据中...");
                         String memory = execCommand(command);
                         if (memory != null) {
                             data.add(memory);
                         }
-                        Thread.sleep(1000);
+                    } else {
+                        break;
                     }
-                    break;
+                    Thread.sleep(1000);
                 } else {
                     throw new MyException("Memory数据收集失败");
                 }

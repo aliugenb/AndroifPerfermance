@@ -71,15 +71,16 @@ public class Cpu extends GetData {
         while (true) {
             try {
                 if (DataSwitch.excelNormal) {
-                    while (!DataSwitch.cpuEnd) {
+                    if (!DataSwitch.cpuEnd) {
                         System.out.println("Cpu收集数据中...");
                         String cpu = execCommand(command);
                         if (cpu != null) {
                             data.add(cpu);
                         }
-                        Thread.sleep(5000);
+                    } else {
+                        break;
                     }
-                    break;
+                    Thread.sleep(5000);
                 } else {
                     throw new MyException("Cpu数据收集失败");
                 }

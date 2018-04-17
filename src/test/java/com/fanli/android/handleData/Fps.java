@@ -35,7 +35,7 @@ public class Fps extends GetData {
         while (true) {
             try {
                 if (DataSwitch.excelNormal) {
-                    while (!DataSwitch.fpsEnd) {
+                    if (!DataSwitch.fpsEnd) {
                         System.out.println("FPS收集数据中...");
                         String fps = execCommand(command);
                         System.out.println(fps);
@@ -46,10 +46,11 @@ public class Fps extends GetData {
 
                             String result = total + "," + janky + "," + percent + ",";
                             data.add(result);
-                            Thread.sleep(4000);
                         }
+                    } else {
+                        break;
                     }
-                    break;
+                    Thread.sleep(4000);
                 } else {
                     throw new MyException("Fps数据收集失败");
                 }
