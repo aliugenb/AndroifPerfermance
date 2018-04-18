@@ -41,7 +41,8 @@ public class CpuHomeToSeachTest extends Action {
             sleep(1000);
 
             //获取历史关键词的坐标
-            execCmd("adb shell input tap " + searchCoordinates + "");
+//            execCmd("adb shell input tap " + searchCoordinates + "");
+            searchElement.click();
             sleep(2000);
             AndroidElement keyWordElement = driver.findElementByAndroidUIAutomator("text(\"" + keyWord + "\")");
             String keyWordCoordinates = getCenterCoordinates(keyWordElement);

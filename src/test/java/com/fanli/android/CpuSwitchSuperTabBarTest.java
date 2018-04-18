@@ -31,6 +31,8 @@ public class CpuSwitchSuperTabBarTest extends Action {
             login();
             driver.findElementByAndroidUIAutomator("text(\"首页\")").click();
             sleep(2000);
+            closeInterstitial();
+            sleep(1000);
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
             sleep(2000);
             closeInterstitial();
