@@ -33,11 +33,14 @@ public class CpuSwipSuperSearchTest extends Action {
             driver.findElementById("com.fanli.android.apps:id/et_search").sendKeys("U盘");
             sleep(3000);
             //恢复输入法，点击enter
-            execCmd("adb shell ime set " + inputMethod() + "");
+            execCmd("adb shell ime set " + getInputMethod() + "");
             pressKey(KEY.ENTER);
             sleep(5000);
             start = true;
             swipUpAndDownByTime(testTime);
+            pressKey(KEY.BACK);
+            sleep(1000);
+            pressKey(KEY.BACK);
             sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

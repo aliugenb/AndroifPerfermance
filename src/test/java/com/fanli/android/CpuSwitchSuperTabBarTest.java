@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.KEY;
 import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
@@ -31,6 +32,8 @@ public class CpuSwitchSuperTabBarTest extends Action {
             login();
             driver.findElementByAndroidUIAutomator("text(\"首页\")").click();
             sleep(2000);
+            closeInterstitial();
+            sleep(1000);
             driver.findElementByAndroidUIAutomator("text(\"超级返\")").click();
             sleep(2000);
             closeInterstitial();
@@ -46,6 +49,7 @@ public class CpuSwitchSuperTabBarTest extends Action {
                     sleep(1000);
                 }
             }
+            pressKey(KEY.BACK);
             sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

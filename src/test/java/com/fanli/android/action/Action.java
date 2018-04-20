@@ -205,7 +205,7 @@ public class Action {
     }
 
     //获取非appium的输入法
-    public static String inputMethod() throws IOException, MyException {
+    public static String getInputMethod() throws IOException, MyException {
         String inputMethod = null;
         List<String> inputMethods = new ArrayList<>();
         Runtime runtime = Runtime.getRuntime();

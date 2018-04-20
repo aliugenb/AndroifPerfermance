@@ -39,7 +39,7 @@ public class CpuSuperToSearchTest extends Action {
             driver.findElementById("com.fanli.android.apps:id/et_search").sendKeys(keyWord);
             sleep(3000);
             //恢复输入法，点击enter
-            execCmd("adb shell ime set " + inputMethod() + "");
+            execCmd("adb shell ime set " + getInputMethod() + "");
             pressKey(KEY.ENTER);
             sleep(4000);
             start = true;
@@ -65,6 +65,8 @@ public class CpuSuperToSearchTest extends Action {
                 pressKey(KEY.BACK);
                 sleep(1000);
             }
+            //返回app首页后静置2分钟
+            pressKey(KEY.BACK);
             sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

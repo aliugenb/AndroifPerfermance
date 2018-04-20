@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.KEY;
 import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
@@ -39,6 +40,7 @@ public class CpuSwitchNineCatsTest extends Action {
                 execCmd("adb shell input tap " + (int) Math.round(Math.random() * (maxX - 10) + 10) + " " + y + "");
                 sleep(2000);
             }
+            pressKey(KEY.BACK);
             sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;

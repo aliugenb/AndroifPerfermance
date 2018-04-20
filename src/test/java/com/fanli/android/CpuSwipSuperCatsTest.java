@@ -1,6 +1,7 @@
 package com.fanli.android;
 
 import com.fanli.android.action.Action;
+import com.fanli.android.action.KEY;
 import com.fanli.android.action.MyException;
 import com.fanli.android.handleData.Cpu;
 import com.fanli.android.handleData.DataSwitch;
@@ -34,6 +35,7 @@ public class CpuSwipSuperCatsTest extends Action {
             sleep(3000);
             start = true;
             swipUpAndDownByTime(testTime);
+            pressKey(KEY.BACK);
             sleep(formatMin(2));
         } catch (Exception e) {
             DataSwitch.excelNormal = false;
