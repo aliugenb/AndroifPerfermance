@@ -1,149 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页banner滑动检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuBannerTest">-->
-                <!--<methods>-->
-                    <!--<include name="swipBanner"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入9k9检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuHomeToNineTest">-->
-                <!--<methods>-->
-                    <!--<include name="enterNine"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入主搜检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuHomeToSeachTest">-->
-                <!--<methods>-->
-                    <!--<include name="enterSeach"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入超级返检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuHomeToSuperTest">-->
-                <!--<methods>-->
-                    <!--<include name="enterSuper"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返首页反复进入搜索检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSuperToSearchTest">-->
-                <!--<methods>-->
-                    <!--<include name="superToSearch"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="9k9首页滑动检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSwipNineHomepageTest">-->
-                <!--<methods>-->
-                    <!--<include name="swipNineHomepage"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返品牌列表滑动检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSwipSuperBrandTest">-->
-                <!--<methods>-->
-                    <!--<include name="swipSuperBrand"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返分类滑动检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSwipSuperCatsTest">-->
-                <!--<methods>-->
-                    <!--<include name="swipSuperCats"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返限量秒杀滑动检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSwipSuperLimitTest">-->
-                <!--<methods>-->
-                    <!--<include name="swipSuperLimit"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返搜索滑动检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSwipSuperSearchTest">-->
-                <!--<methods>-->
-                    <!--<include name="swipSuperSearch"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页切换Tabbar检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSwitchHomeTabBarTest">-->
-                <!--<methods>-->
-                    <!--<include name="switchTabBar"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="9k9切换分类检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSwitchNineCatsTest">-->
-                <!--<methods>-->
-                    <!--<include name="switchNineCats"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返切换分类检查cpu和memory">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.CpuSwitchSuperCatsTest">-->
-                <!--<methods>-->
-                    <!--<include name="switchSuperCats"/>-->
-                    <!--<include name="cpuMonitor"/>-->
-                    <!--<include name="memoryMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页banner滑动检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuBannerTest">
+                <methods>
+                    <include name="swipBanner"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入9k9检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuHomeToNineTest">
+                <methods>
+                    <include name="enterNine"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入主搜检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuHomeToSeachTest">
+                <methods>
+                    <include name="enterSeach"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页反复进入超级返检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuHomeToSuperTest">
+                <methods>
+                    <include name="enterSuper"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返首页反复进入搜索检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSuperToSearchTest">
+                <methods>
+                    <include name="superToSearch"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="9k9首页滑动检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSwipNineHomepageTest">
+                <methods>
+                    <include name="swipNineHomepage"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返品牌列表滑动检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSwipSuperBrandTest">
+                <methods>
+                    <include name="swipSuperBrand"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返分类滑动检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSwipSuperCatsTest">
+                <methods>
+                    <include name="swipSuperCats"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返限量秒杀滑动检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSwipSuperLimitTest">
+                <methods>
+                    <include name="swipSuperLimit"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                    <include name="cpuMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返搜索滑动检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSwipSuperSearchTest">
+                <methods>
+                    <include name="swipSuperSearch"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="首页切换Tabbar检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSwitchHomeTabBarTest">
+                <methods>
+                    <include name="switchTabBar"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="9k9切换分类检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSwitchNineCatsTest">
+                <methods>
+                    <include name="switchNineCats"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返切换分类检查cpu和memory">
+        <classes>
+            <class name="com.fanli.android.CpuSwitchSuperCatsTest">
+                <methods>
+                    <include name="switchSuperCats"/>
+                    <include name="cpuMonitor"/>
+                    <include name="memoryMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
     <test verbose="2" preserve-order="true" parallel="methods" thread-count="3" name="超级返切换Tabbar检查cpu和memory">
         <classes>
             <class name="com.fanli.android.CpuSwitchSuperTabBarTest">
@@ -155,44 +155,44 @@
             </class>
         </classes>
     </test>
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="主搜fps测试">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.FpsHomeSearchTest">-->
-                <!--<methods>-->
-                    <!--<include name="homeSearch"/>-->
-                    <!--<include name="fpsMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="9k9首页fps测试">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.FpsNineHomepageTest">-->
-                <!--<methods>-->
-                    <!--<include name="nineHomepage"/>-->
-                    <!--<include name="fpsMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="超级返首页fps">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.FpsSuperHomepageTest">-->
-                <!--<methods>-->
-                    <!--<include name="superHomepage"/>-->
-                    <!--<include name="fpsMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="超级返限量秒杀FPS">-->
-        <!--<classes>-->
-            <!--<class name="com.fanli.android.FpsSuperLimitTest">-->
-                <!--<methods>-->
-                    <!--<include name="superLimit"/>-->
-                    <!--<include name="fpsMonitor"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="主搜fps测试">
+        <classes>
+            <class name="com.fanli.android.FpsHomeSearchTest">
+                <methods>
+                    <include name="homeSearch"/>
+                    <include name="fpsMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="9k9首页fps测试">
+        <classes>
+            <class name="com.fanli.android.FpsNineHomepageTest">
+                <methods>
+                    <include name="nineHomepage"/>
+                    <include name="fpsMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="超级返首页fps">
+        <classes>
+            <class name="com.fanli.android.FpsSuperHomepageTest">
+                <methods>
+                    <include name="superHomepage"/>
+                    <include name="fpsMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" parallel="methods" thread-count="2" name="超级返限量秒杀FPS">
+        <classes>
+            <class name="com.fanli.android.FpsSuperLimitTest">
+                <methods>
+                    <include name="superLimit"/>
+                    <include name="fpsMonitor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

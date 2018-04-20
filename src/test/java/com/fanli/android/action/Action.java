@@ -23,7 +23,7 @@ public class Action {
 
     public static AndroidDriver<AndroidElement> driver;
     //测试时长min
-    public final static int testTime = 1;
+    public final static int testTime = 10;
 
     @BeforeTest
     public static void setUp() throws Exception {
