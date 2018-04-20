@@ -23,7 +23,7 @@ public class Action {
 
     public static AndroidDriver<AndroidElement> driver;
     //测试时长min
-    public final static int testTime = 10;
+    public final static int testTime = 1;
 
     @BeforeTest
     public static void setUp() throws Exception {
@@ -205,7 +205,7 @@ public class Action {
     }
 
     //获取非appium的输入法
-    public static String inputMethod() throws IOException, MyException {
+    public static String getInputMethod() throws IOException, MyException {
         String inputMethod = null;
         List<String> inputMethods = new ArrayList<>();
         Runtime runtime = Runtime.getRuntime();
