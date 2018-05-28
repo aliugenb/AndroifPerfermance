@@ -30,12 +30,16 @@ public class CpuSwipSuperSearchTest extends Action {
             sleep(2000);
             driver.findElementById("com.fanli.android.apps:id/search_content").click();
             sleep(2000);
+            pressKey(KEY.BACK);
+            sleep(1000);
             driver.findElementById("com.fanli.android.apps:id/et_search").sendKeys("U盘");
             sleep(3000);
             //恢复输入法，点击enter
             execCmd("adb shell ime set " + getInputMethod() + "");
+            driver.findElementById("com.fanli.android.apps:id/et_search").click();
+            sleep(1000);
             pressKey(KEY.ENTER);
-            sleep(5000);
+            sleep(4000);
             start = true;
             swipUpAndDownByTime(testTime);
             pressKey(KEY.BACK);
