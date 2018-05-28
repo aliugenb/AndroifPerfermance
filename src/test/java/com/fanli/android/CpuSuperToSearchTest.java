@@ -35,11 +35,16 @@ public class CpuSuperToSearchTest extends Action {
             String searchCoordinates = getCenterCoordinates(searchElement);
             searchElement.click();
             sleep(2000);
+            //6.8新增首次进入搜索后蒙层
+            pressKey(KEY.BACK);
+            sleep(1000);
             String keyWord = "aaa";
             driver.findElementById("com.fanli.android.apps:id/et_search").sendKeys(keyWord);
-            sleep(3000);
+            sleep(2000);
             //恢复输入法，点击enter
             execCmd("adb shell ime set " + getInputMethod() + "");
+            driver.findElementById("com.fanli.android.apps:id/et_search").click();
+            sleep(1000);
             pressKey(KEY.ENTER);
             sleep(4000);
             start = true;
