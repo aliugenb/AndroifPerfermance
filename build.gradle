@@ -17,7 +17,10 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile 'org.testng:testng:6.10'
     testCompile group: 'io.appium', name: 'java-client', version: '5.0.4'
+
     compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
 }
 
 group 'com.fanli.android'
