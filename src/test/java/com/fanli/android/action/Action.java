@@ -76,6 +76,10 @@ public class Action {
         Thread.sleep(2000);
     }
 
+    public static AndroidDriver getDriver(){
+        return driver;
+    }
+
     @AfterTest
     public static void tearDown() throws Exception {
         DataSwitch.fpsEnd = false;
