@@ -93,7 +93,7 @@ public class TestngListener extends TestListenerAdapter {
         File location = new File("Screenshots");
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        String screenShotName = location.getAbsolutePath()+File.separator+result.getMethod().getMethodName()+dateFormat.format(now)+".png";
+        String screenShotName = location.getAbsolutePath()+File.separator+result.getMethod().getMethodName()+"-"+dateFormat.format(now)+".png";
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try{
             FileUtils.copyFile(scrFile, new File(screenShotName));
