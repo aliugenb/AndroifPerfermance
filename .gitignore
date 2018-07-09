@@ -1,6 +1,7 @@
 .idea/
 apps/*.apk
 out/
+test-output/
 *.iml
 .gradle
 /local.properties
