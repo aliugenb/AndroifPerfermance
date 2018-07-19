@@ -1,10 +1,17 @@
 package com.fanli.android.listener;
 
-import org.testng.IReporter;
-import org.testng.ISuite;
-import org.testng.ISuiteResult;
-import org.testng.ITestContext;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.ResourceCDN;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.ChartLocation;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+import org.testng.*;
+import org.testng.xml.XmlSuite;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -18,16 +25,16 @@ import java.util.Map;
 public class ExtentTestNGIReporterListener implements IReporter {
 
     private static final String OUTPUT_FOLDER = "test-output/";
-    private static final String FILE_NAME = "Extent.html";
+    private static final String FILE_NAME = "Extent1.html";
 
     private ExtentReports extent;
 
     @Override
-    public void generateReport(List<xmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
+    public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
         init();
 
         for (ISuite suite : suites) {
-            Map result = suite.getResults();
+            Map<String, ISuiteResult>  result = suite.getResults();
 
             for (ISuiteResult r : result.values()) {
                 ITestContext context = r.getTestContext();
@@ -51,7 +58,8 @@ public class ExtentTestNGIReporterListener implements IReporter {
         htmlReporter.config().setDocumentTitle("ExtentReports - Created by TestNG Listener");
         htmlReporter.config().setReportName("ExtentReports - Created by TestNG Listener");
         htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
-        htmlReporter.config().setTheme(Theme.STANDARD);
+//        htmlReporter.config().setTheme(Theme.STANDARD);
+        htmlReporter.config().setResourceCDN(ResourceCDN.EXTENTREPORTS);
 
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
